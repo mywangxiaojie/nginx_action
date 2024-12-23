@@ -3,11 +3,13 @@
 * [前言](README.md)
 
 * [第一章：NGINX 入门介绍](chapter1/README.md)
-    * [第一节：NGINX 安装与配置](chapter1/Linux-Nginx-关闭进程.md)
+    * [第一节：NGINX 安装与配置](chapter1/Nginx服务启动与关闭.md)
 
 * [第二章：NGINX 基本配置语法](chapter2/README.md)
+    * [配置文件查看](chapter2/Nginx快速查看配置文件路径的方法.md)
 
 * [第三章：HTTP 模块详解](chapter3/README.md)
+    * [Nginx处理Http请求全过程](chapter3/Nginx处理一个HTTP请求的全过程.md)
 
 * [第四章：反向代理原理与实践](chapter4/README.md)
 

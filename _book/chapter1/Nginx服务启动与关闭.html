@@ -116,9 +116,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="Linux-Nginx-关闭进程.html">
+        <li class="chapter active" data-level="1.2.1" data-path="Nginx服务启动与关闭.html">
             
-                <a href="Linux-Nginx-关闭进程.html">
+                <a href="Nginx服务启动与关闭.html">
             
                     
                     第一节：NGINX 安装与配置
@@ -145,6 +145,25 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../chapter2/Nginx快速查看配置文件路径的方法.html">
+            
+                <a href="../chapter2/Nginx快速查看配置文件路径的方法.html">
+            
+                    
+                    配置文件查看
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.4" data-path="../chapter3/">
@@ -157,6 +176,25 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../chapter3/Nginx处理一个HTTP请求的全过程.html">
+            
+                <a href="../chapter3/Nginx处理一个HTTP请求的全过程.html">
+            
+                    
+                    Nginx处理Http请求全过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -380,13 +418,20 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x5173;&#x95ED;nginx&#x8FDB;&#x7A0B;">&#x5173;&#x95ED;Nginx&#x8FDB;&#x7A0B;</h2>
-<p>nginx&#x9ED8;&#x8BA4;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;</p>
-<pre><code class="lang-shell">root      2713     1  0 07:56 ?        00:00:00 nginx: master process ../sbin/nginx
-nobody    2714  2713  0 07:56 ?        00:00:00 nginx: worker process
-</code></pre>
-<hr>
-<p>&#x542F;&#x52A8;nginx&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x66F4;&#x6539;&#x914D;&#x7F6E;&#xFF0C;&#x8BBE;&#x7F6E;&#x53C2;&#x6570;worker_processes=10&#x3002;&#x6765;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;</p>
+                                <h2 id="&#x542F;&#x52A8;nginx&#x670D;&#x52A1;">&#x542F;&#x52A8;Nginx&#x670D;&#x52A1;</h2>
+<h3 id="&#x542F;&#x52A8;nginx&#x670D;&#x52A1;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;">&#x542F;&#x52A8;Nginx&#x670D;&#x52A1;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</h3>
+<ol>
+<li>&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x542F;&#x52A8;&#xFF1A;&#x8FDB;&#x5165;Nginx&#x53EF;&#x6267;&#x884C;&#x76EE;&#x5F55;&#xFF08;&#x901A;&#x5E38;&#x662F;/usr/local/nginx/sbin/&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x8F93;&#x5165;&#x547D;&#x4EE4;./nginx&#x5373;&#x53EF;&#x542F;&#x52A8;Nginx&#x670D;&#x52A1;&#x3002;</li>
+<li>&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#xFF1A;&#x5927;&#x591A;&#x6570;Linux&#x53D1;&#x884C;&#x7248;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#xFF0C;&#x5982;systemd&#x6216;init.d&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x5DE5;&#x5177;&#x6765;&#x542F;&#x52A8;Nginx&#x670D;&#x52A1;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728;systemd&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x547D;&#x4EE4;sudo systemctl start nginx&#x6765;&#x542F;&#x52A8;Nginx&#x670D;&#x52A1;&#x3002;</li>
+</ol>
+<h2 id="&#x91CD;&#x542F;nginx&#x670D;&#x52A1;">&#x91CD;&#x542F;Nginx&#x670D;&#x52A1;</h2>
+<h3 id="&#x91CD;&#x542F;nginx&#x670D;&#x52A1;&#x4E5F;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;">&#x91CD;&#x542F;Nginx&#x670D;&#x52A1;&#x4E5F;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</h3>
+<ol>
+<li>&#x8FDB;&#x5165;Nginx&#x53EF;&#x6267;&#x884C;&#x76EE;&#x5F55;&#xFF08;&#x901A;&#x5E38;&#x662F;/usr/local/nginx/sbin/&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x8F93;&#x5165;&#x547D;&#x4EE4;./nginx -s reload&#x6765;&#x91CD;&#x542F;Nginx&#x670D;&#x52A1;&#x3002;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x4F1A;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;Nginx&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x4E2D;&#x65AD;&#x5F53;&#x524D;&#x7684;&#x8FDE;&#x63A5;&#x3002;</li>
+<li>&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x3002;&#x5728;systemd&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x547D;&#x4EE4;sudo systemctl restart nginx&#x6765;&#x91CD;&#x542F;Nginx&#x670D;&#x52A1;&#x3002;</li>
+</ol>
+<h2 id="&#x505C;&#x6B62;nginx&#x670D;&#x52A1;">&#x505C;&#x6B62;Nginx&#x670D;&#x52A1;</h2>
+<p>Nginx&#x9ED8;&#x8BA4;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;&#x3002;&#x542F;&#x52A8;nginx&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x66F4;&#x6539;&#x914D;&#x7F6E;&#xFF0C;&#x8BBE;&#x7F6E;&#x53C2;&#x6570;worker_processes=10&#x3002;&#x6765;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;&#x3002;</p>
 <pre><code class="lang-conf">#user  nobody;
 worker_processes  10;
 
@@ -400,32 +445,13 @@ events {
     worker_connections  1024;
 }
 </code></pre>
-<hr>
-<pre><code class="lang-shell">fuhui@ubuntu:/usr/local/nginx$ ps -ef | grep &apos;nginx&apos; 
-root      2713     1  0 07:56 ?        00:00:00 nginx: master process ../sbin/nginx
-nobody    2747  2713  0 08:00 ?
-
-        00:00:00 nginx: worker process
-nobody    2748  2713  0 08:00 ?        00:00:00 nginx: worker process
-nobody    2749  2713  0 08:00 ?        00:00:00 nginx: worker process
-nobody    2750  2713  0 08:00 ?        00:00:00 nginx: worker process
-nobody    2751  2713  0 08:00 ?
-
-        00:00:00 nginx: worker process
-nobody    2752  2713  0 08:00 ?        00:00:00 nginx: worker process
-nobody    2753  2713  0 08:00 ?
-
-        00:00:00 nginx: worker process
-nobody    2754  2713  0 08:00 ?
-
-        00:00:00 nginx: worker process
-nobody    2755  2713  0 08:00 ?
-        00:00:00 nginx: worker process
-nobody    2756  2713  0 08:00 ?        00:00:00 nginx: worker process
-fuhui     2852  2332  0 08:29 pts/6    00:00:00 grep --color=auto nginx
-</code></pre>
-<hr>
-<p>&#x5F00;&#x59CB;&#x5220;&#x9664;&#x6389;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;Nginx&#x8FDB;&#x7A0B;</p>
+<h3 id="&#x505C;&#x6B62;nginx&#x670D;&#x52A1;&#x4E5F;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;">&#x505C;&#x6B62;Nginx&#x670D;&#x52A1;&#x4E5F;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</h3>
+<ol>
+<li>&#x8FDB;&#x5165;Nginx&#x53EF;&#x6267;&#x884C;&#x76EE;&#x5F55;&#xFF08;&#x901A;&#x5E38;&#x662F;/usr/local/nginx/sbin/&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x8F93;&#x5165;&#x547D;&#x4EE4;./nginx -s stop&#x6765;&#x505C;&#x6B62;Nginx&#x670D;&#x52A1;&#x3002;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x4F1A;&#x7ACB;&#x5373;&#x505C;&#x6B62;Nginx&#x670D;&#x52A1;&#x3002;</li>
+<li>&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x3002;&#x5728;systemd&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x547D;&#x4EE4;sudo systemctl stop nginx&#x6765;&#x505C;&#x6B62;Nginx&#x670D;&#x52A1;&#x3002;</li>
+<li>&#x76F4;&#x63A5;&#x6740;&#x6B7B;&#x8FDB;&#x7A0B;&#x3002;&#x9996;&#x5148;&#x9700;&#x8981;&#x67E5;&#x627E;Nginx&#x7684;&#x8FDB;&#x7A0B;&#x53F7;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x547D;&#x4EE4;ps -ef | grep nginx&#x6765;&#x67E5;&#x627E;&#x3002;&#x7136;&#x540E;&#x4F7F;&#x7528;&#x547D;&#x4EE4;kill -QUIT [&#x8FDB;&#x7A0B;&#x53F7;]&#xFF08;&#x4ECE;&#x5BB9;&#x505C;&#x6B62;&#xFF09;&#x3001;kill -TERM [&#x8FDB;&#x7A0B;&#x53F7;]&#xFF08;&#x5FEB;&#x901F;&#x505C;&#x6B62;&#xFF09;&#x6216;kill -INT [&#x8FDB;&#x7A0B;&#x53F7;]&#xFF08;&#x5F3A;&#x5236;&#x505C;&#x6B62;&#xFF09;&#x6765;&#x505C;&#x6B62;Nginx&#x670D;&#x52A1;&#x3002;</li>
+<li>&#x6279;&#x91CF;&#x5220;&#x9664;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;worker&#x8FDB;&#x7A0B;,&#x5982;&#x4E0B;&#xFF1A;</li>
+</ol>
 <p>&#x65B9;&#x5F0F;1&#xFF1A;</p>
 <pre><code class="lang-shell">sudo kill ` ps -ef | grep &apos;nginx&apos; | awk &apos;{print  $2}&apos; `
 </code></pre>
@@ -433,7 +459,13 @@ fuhui     2852  2332  0 08:29 pts/6    00:00:00 grep --color=auto nginx
 <p>&#x65B9;&#x5F0F;2&#xFF1A;</p>
 <pre><code class="lang-powershell">kill $(ps aux | grep <span class="hljs-string">&apos;[n]ginx&apos;</span> | awk <span class="hljs-string">&apos;{print $2}&apos;</span>)
 </code></pre>
-<hr>
+<h2 id="&#x8BBE;&#x7F6E;&#x5F00;&#x673A;&#x81EA;&#x542F;&#x52A8;">&#x8BBE;&#x7F6E;&#x5F00;&#x673A;&#x81EA;&#x542F;&#x52A8;</h2>
+<p>&#x5982;&#x679C;&#x4F60;&#x5E0C;&#x671B;&#x5728;&#x7CFB;&#x7EDF;&#x542F;&#x52A8;&#x65F6;&#x81EA;&#x52A8;&#x542F;&#x52A8;Nginx&#x670D;&#x52A1;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ol>
+<li>&#x5C06;Nginx&#x52A0;&#x5165;&#x5230;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x4E2D;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728;systemd&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x547D;&#x4EE4;<code>sudo systemctl enable nginx</code>&#x6765;&#x5C06;Nginx&#x6DFB;&#x52A0;&#x5230;&#x5F00;&#x673A;&#x81EA;&#x542F;&#x52A8;&#x5217;&#x8868;&#x4E2D;&#x3002;&#x5728;init.d&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;Nginx&#x7684;&#x542F;&#x52A8;&#x811A;&#x672C;&#x6DFB;&#x52A0;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x76EE;&#x5F55;&#x4E2D;&#xFF08;&#x5982;/etc/rc.d/rc3.d/&#xFF09;&#x3002;</li>
+<li>&#x5C06;Nginx&#x52A0;&#x5165;&#x5230;chkconfig&#x7BA1;&#x7406;&#x5217;&#x8868;&#x4E2D;&#x3002;&#x4F7F;&#x7528;&#x547D;&#x4EE4;chkconfig --add /etc/init.d/nginx&#x6765;&#x5C06;Nginx&#x6DFB;&#x52A0;&#x5230;chkconfig&#x7BA1;&#x7406;&#x5217;&#x8868;&#x4E2D;&#x3002;&#x7136;&#x540E;&#x4F7F;&#x7528;&#x547D;&#x4EE4;chkconfig nginx on&#x6765;&#x8BBE;&#x7F6E;Nginx&#x5728;&#x5F00;&#x673A;&#x65F6;&#x81EA;&#x52A8;&#x542F;&#x52A8;&#x3002;</li>
+<li>&#x5C06;Nginx&#x52A0;&#x5165;&#x5230;rc.local&#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x4F7F;&#x7528;&#x7F16;&#x8F91;&#x5668;&#x6253;&#x5F00; /etc/rc.local &#x6587;&#x4EF6;&#xFF0C;&#x6DFB;&#x52A0;&#x4E00;&#x884C; /etc/init.d/nginx start &#x6765;&#x5728;&#x7CFB;&#x7EDF;&#x542F;&#x52A8;&#x65F6;&#x81EA;&#x52A8;&#x542F;&#x52A8;Nginx&#x3002;</li>
+</ol>
 
                                 
                                 </section>
@@ -477,7 +509,7 @@ fuhui     2852  2332  0 08:29 pts/6    00:00:00 grep --color=auto nginx
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第一节：NGINX 安装与配置","level":"1.2.1","depth":2,"next":{"title":"第二章：NGINX 基本配置语法","level":"1.3","depth":1,"path":"chapter2/README.md","ref":"chapter2/README.md","articles":[]},"previous":{"title":"第一章：NGINX 入门介绍","level":"1.2","depth":1,"path":"chapter1/README.md","ref":"chapter1/README.md","articles":[{"title":"第一节：NGINX 安装与配置","level":"1.2.1","depth":2,"path":"chapter1/Linux-Nginx-关闭进程.md","ref":"chapter1/Linux-Nginx-关闭进程.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter1/Linux-Nginx-关闭进程.md","mtime":"2024-12-23T04:06:25.860Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-12-23T04:46:13.174Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第一节：NGINX 安装与配置","level":"1.2.1","depth":2,"next":{"title":"第二章：NGINX 基本配置语法","level":"1.3","depth":1,"path":"chapter2/README.md","ref":"chapter2/README.md","articles":[{"title":"配置文件查看","level":"1.3.1","depth":2,"path":"chapter2/Nginx快速查看配置文件路径的方法.md","ref":"chapter2/Nginx快速查看配置文件路径的方法.md","articles":[]}]},"previous":{"title":"第一章：NGINX 入门介绍","level":"1.2","depth":1,"path":"chapter1/README.md","ref":"chapter1/README.md","articles":[{"title":"第一节：NGINX 安装与配置","level":"1.2.1","depth":2,"path":"chapter1/Nginx服务启动与关闭.md","ref":"chapter1/Nginx服务启动与关闭.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter1/Nginx服务启动与关闭.md","mtime":"2024-12-23T04:54:21.630Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-12-23T05:26:38.878Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

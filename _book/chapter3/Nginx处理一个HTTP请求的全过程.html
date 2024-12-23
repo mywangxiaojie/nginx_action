@@ -1,0 +1,1707 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Nginx处理Http请求全过程 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter4/" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../chapter1/">
+            
+                <a href="../chapter1/">
+            
+                    
+                    第一章：NGINX 入门介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../chapter1/Nginx服务启动与关闭.html">
+            
+                <a href="../chapter1/Nginx服务启动与关闭.html">
+            
+                    
+                    第一节：NGINX 安装与配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../chapter2/">
+            
+                <a href="../chapter2/">
+            
+                    
+                    第二章：NGINX 基本配置语法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../chapter2/Nginx快速查看配置文件路径的方法.html">
+            
+                <a href="../chapter2/Nginx快速查看配置文件路径的方法.html">
+            
+                    
+                    配置文件查看
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第三章：HTTP 模块详解
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.1" data-path="Nginx处理一个HTTP请求的全过程.html">
+            
+                <a href="Nginx处理一个HTTP请求的全过程.html">
+            
+                    
+                    Nginx处理Http请求全过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../chapter4/">
+            
+                <a href="../chapter4/">
+            
+                    
+                    第四章：反向代理原理与实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../chapter5/">
+            
+                <a href="../chapter5/">
+            
+                    
+                    第五章：负载均衡策略剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../chapter6/">
+            
+                <a href="../chapter6/">
+            
+                    
+                    第六章：静态资源处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../chapter7/">
+            
+                <a href="../chapter7/">
+            
+                    
+                    第七章：动态页面支持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../chapter8/">
+            
+                <a href="../chapter8/">
+            
+                    
+                    第八章：安全与防护机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../chapter9/">
+            
+                <a href="../chapter9/">
+            
+                    
+                    第九章：NGINX 与微服务架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../chapter10/">
+            
+                <a href="../chapter10/">
+            
+                    
+                    第十章：性能优化技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../chapter11/">
+            
+                <a href="../chapter11/">
+            
+                    
+                    第十一章：监控与故障排查
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../chapter11/HertzBeat快速监控.html">
+            
+                <a href="../chapter11/HertzBeat快速监控.html">
+            
+                    
+                    HertzBeat快速监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../chapter12/">
+            
+                <a href="../chapter12/">
+            
+                    
+                    第十二章：高可用性设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../chapter13/">
+            
+                <a href="../chapter13/">
+            
+                    
+                    第十三章：NGINX 插件扩展
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../chapter14/">
+            
+                <a href="../chapter14/">
+            
+                    
+                    第十四章：跨平台部署案例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../chapter15/">
+            
+                <a href="../chapter15/">
+            
+                    
+                    第十五章：NGINX 进阶实战项目
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Nginx处理Http请求全过程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>&#x524D;&#x9762;&#x7ED9;&#x5927;&#x5BB6;&#x8BB2;&#x4E86; Nginx &#x662F;&#x5982;&#x4F55;&#x5904;&#x7406; HTTP&#x8BF7;&#x6C42;&#x5934;&#x90E8;&#x7684;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x5230;&#x4E86;&#x771F;&#x6B63;&#x5904;&#x7406; HTTP &#x8BF7;&#x6C42;&#x7684;&#x9636;&#x6BB5;&#x4E86;&#x3002;&#x5148;&#x770B;&#x4E0B;&#x9762;&#x8FD9;&#x5F20;&#x56FE;&#xFF0C;&#x8FD9;&#x5F20;&#x56FE;&#x662F; Nginx &#x5904;&#x7406; HTTP &#x8BF7;&#x6C42;&#x7684;&#x793A;&#x610F;&#x56FE;&#xFF0C;&#x867D;&#x7136;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x5374;&#x5F88;&#x597D;&#x7684;&#x8BF4;&#x660E;&#x4E86;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x3002;</p>
+<ol>
+<li>Read Request Headers&#xFF1A;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#x5934;&#x3002;</li>
+<li>Identify Configuration Block&#xFF1A;&#x8BC6;&#x522B;&#x7531;&#x54EA;&#x4E00;&#x4E2A; location &#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5339;&#x914D; URL&#x3002;</li>
+<li>Apply Rate Limits&#xFF1A;&#x5224;&#x65AD;&#x662F;&#x5426;&#x9650;&#x901F;&#x3002;&#x4F8B;&#x5982;&#x53EF;&#x80FD;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x5E76;&#x53D1;&#x7684;&#x8FDE;&#x63A5;&#x6570;&#x592A;&#x591A;&#x8D85;&#x8FC7;&#x4E86;&#x9650;&#x5236;&#xFF0C;&#x6216;&#x8005; QPS &#x592A;&#x9AD8;&#x3002;</li>
+<li>Perform Authentication&#xFF1A;&#x8FDE;&#x63A5;&#x63A7;&#x5236;&#xFF0C;&#x9A8C;&#x8BC1;&#x8BF7;&#x6C42;&#x3002;&#x4F8B;&#x5982;&#x53EF;&#x80FD;&#x6839;&#x636E; Referrer &#x5934;&#x90E8;&#x505A;&#x4E00;&#x4E9B;&#x9632;&#x76D7;&#x94FE;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x6216;&#x8005;&#x9A8C;&#x8BC1;&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;&#x3002;</li>
+<li>Generate Content&#xFF1A;&#x751F;&#x6210;&#x8FD4;&#x56DE;&#x7ED9;&#x7528;&#x6237;&#x7684;&#x54CD;&#x5E94;&#x3002;&#x4E3A;&#x4E86;&#x751F;&#x6210;&#x8FD9;&#x4E2A;&#x54CD;&#x5E94;&#xFF0C;&#x505A;&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x4F1A;&#x548C;&#x4E0A;&#x6E38;&#x670D;&#x52A1;&#xFF08;Upstream Services&#xFF09;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#x8FD8;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x4E9B;&#x5B50;&#x8BF7;&#x6C42;&#x6216;&#x8005;&#x91CD;&#x5B9A;&#x5411;&#xFF0C;&#x90A3;&#x4E48;&#x8FD8;&#x4F1A;&#x8D70;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF08;Internal redirects and subrequests&#xFF09;&#x3002;</li>
+<li>Response Filters&#xFF1A;&#x8FC7;&#x6EE4;&#x8FD4;&#x56DE;&#x7ED9;&#x7528;&#x6237;&#x7684;&#x54CD;&#x5E94;&#x3002;&#x6BD4;&#x5982;&#x538B;&#x7F29;&#x54CD;&#x5E94;&#xFF0C;&#x6216;&#x8005;&#x5BF9;&#x56FE;&#x7247;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</li>
+<li>Log&#xFF1A;&#x8BB0;&#x5F55;&#x65E5;&#x5FD7;&#x3002;</li>
+</ol>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/f62cd61378dd47e7bd91f83e962643b8~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=oKum2rVFIQmlQplr%2FNPVu4Bq3RU%3D" alt=""></p>
+<p>&#x4EE5;&#x4E0A;&#x8FD9;&#x4E03;&#x4E2A;&#x6B65;&#x9AA4;&#x4ECE;&#x6574;&#x4F53;&#x4E0A;&#x4ECB;&#x7ECD;&#x4E86;&#x4E00;&#x4E0B;&#x5904;&#x7406;&#x6D41;&#x7A0B;&#xFF0C;&#x4E0B;&#x9762;&#x8FD8;&#x4F1A;&#x518D;&#x8BF4;&#x4E00;&#x4E0B;&#x5B9E;&#x9645;&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x3002;</p>
+<h2 id="nginx-&#x5904;&#x7406;-http-&#x8BF7;&#x6C42;&#x7684;-11-&#x4E2A;&#x9636;&#x6BB5;">Nginx &#x5904;&#x7406; HTTP &#x8BF7;&#x6C42;&#x7684; 11 &#x4E2A;&#x9636;&#x6BB5;</h2>
+<p>&#x4E0B;&#x9762;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x8BE6;&#x7EC6;&#x7684; 11 &#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x90FD;&#x53EF;&#x80FD;&#x5BF9;&#x5E94;&#x7740;&#x4E00;&#x4E2A;&#x751A;&#x81F3;&#x591A;&#x4E2A; HTTP &#x6A21;&#x5757;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x5BF9;&#x6BD4;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x80FD;&#x591F;&#x5F88;&#x597D;&#x7684;&#x7406;&#x89E3;&#x8FD9;&#x4E9B;&#x6A21;&#x5757;&#x5177;&#x4F53;&#x662F;&#x600E;&#x4E48;&#x6837;&#x53D1;&#x6325;&#x4F5C;&#x7528;&#x7684;&#x3002;</p>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/9d96a1f602624a2fa94a9d7b7917cd15~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=dMfq0BSEJ5ZbmGopca4SJsmyxX4%3D" alt=""></p>
+<ol>
+<li>POST_READ&#xFF1A;&#x5728; read &#x5B8C;&#x8BF7;&#x6C42;&#x7684;&#x5934;&#x90E8;&#x4E4B;&#x540E;&#xFF0C;&#x5728;&#x6CA1;&#x6709;&#x5BF9;&#x5934;&#x90E8;&#x505A;&#x4EFB;&#x4F55;&#x5904;&#x7406;&#x4E4B;&#x524D;&#xFF0C;&#x60F3;&#x8981;&#x83B7;&#x53D6;&#x5230;&#x4E00;&#x4E9B;&#x539F;&#x59CB;&#x7684;&#x503C;&#xFF0C;&#x5C31;&#x5E94;&#x8BE5;&#x5728;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;&#x8FD9;&#x91CC;&#x9762;&#x4F1A;&#x6D89;&#x53CA;&#x5230;&#x4E00;&#x4E2A; realip &#x6A21;&#x5757;&#x3002;</li>
+<li>SERVER_REWRITE&#xFF1A;&#x548C;&#x4E0B;&#x9762;&#x7684; REWRITE &#x9636;&#x6BB5;&#x4E00;&#x6837;&#xFF0C;&#x90FD;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x53EB; rewrite &#x6A21;&#x5757;&#xFF0C;&#x4E00;&#x822C;&#x6CA1;&#x6709;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#x4F1A;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x3002;</li>
+<li>FIND_CONFIG&#xFF1A;&#x505A; location &#x7684;&#x5339;&#x914D;&#xFF0C;&#x6682;&#x65F6;&#x6CA1;&#x6709;&#x6A21;&#x5757;&#x4F1A;&#x7528;&#x5230;&#x3002;</li>
+<li>REWRITE&#xFF1A;&#x5BF9; URL &#x505A;&#x4E00;&#x4E9B;&#x5904;&#x7406;&#x3002;</li>
+<li>POST_WRITE&#xFF1A;&#x5904;&#x4E8E; REWRITE &#x4E4B;&#x540E;&#xFF0C;&#x4E5F;&#x662F;&#x6682;&#x65F6;&#x6CA1;&#x6709;&#x6A21;&#x5757;&#x4F1A;&#x5728;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x51FA;&#x73B0;&#x3002;</li>
+</ol>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x786E;&#x8BA4;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x7684;&#x4E09;&#x4E2A;&#x6A21;&#x5757;&#xFF1A;</p>
+<ol>
+<li>PREACCESS&#xFF1A;&#x662F;&#x5728; ACCESS &#x4E4B;&#x524D;&#x8981;&#x505A;&#x4E00;&#x4E9B;&#x5DE5;&#x4F5C;&#xFF0C;&#x4F8B;&#x5982;&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x548C; QPS &#x9700;&#x8981;&#x8FDB;&#x884C;&#x9650;&#x5236;&#xFF0C;&#x6D89;&#x53CA;&#x5230;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#xFF1A;limt_conn &#x548C; limit_req</li>
+<li>ACCESS&#xFF1A;&#x6838;&#x5FC3;&#x8981;&#x89E3;&#x51B3;&#x7684;&#x662F;&#x7528;&#x6237;&#x80FD;&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4F8B;&#x5982; auth_basic &#x662F;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&#xFF0C;access &#x662F;&#x7528;&#x6237;&#x8BBF;&#x95EE; IP&#xFF0C;auth_request &#x6839;&#x636E;&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x8FD4;&#x56DE;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x53BB;&#x8BBF;&#x95EE;&#x3002;</li>
+<li>POST_ACCESS&#xFF1A;&#x662F;&#x5728; ACCESS &#x4E4B;&#x540E;&#x4F1A;&#x505A;&#x4E00;&#x4E9B;&#x4E8B;&#x60C5;&#xFF0C;&#x540C;&#x6837;&#x6682;&#x65F6;&#x6CA1;&#x6709;&#x6A21;&#x5757;&#x4F1A;&#x7528;&#x5230;&#x3002;</li>
+</ol>
+<p>&#x6700;&#x540E;&#x7684;&#x4E09;&#x4E2A;&#x9636;&#x6BB5;&#x5904;&#x7406;&#x54CD;&#x5E94;&#x548C;&#x65E5;&#x5FD7;&#xFF1A;</p>
+<ol>
+<li>PRECONTENT&#xFF1A;&#x5728;&#x5904;&#x7406; CONTENT &#x4E4B;&#x524D;&#x4F1A;&#x505A;&#x4E00;&#x4E9B;&#x4E8B;&#x60C5;&#xFF0C;&#x4F8B;&#x5982;&#x4F1A;&#x628A;&#x5B50;&#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x7ED9;&#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x670D;&#x52A1;&#x53BB;&#x5904;&#x7406;&#xFF0C;try_files &#x6A21;&#x5757;&#x4E5F;&#x662F;&#x5728;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x4E2D;&#x3002;</li>
+<li>CONTENT&#xFF1A;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x6A21;&#x5757;&#x5C31;&#x975E;&#x5E38;&#x591A;&#x4E86;&#xFF0C;&#x4F8B;&#x5982; index, autoindex, concat &#x7B49;&#x90FD;&#x662F;&#x5728;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x751F;&#x6548;&#x7684;&#x3002;</li>
+<li>LOG&#xFF1A;&#x8BB0;&#x5F55;&#x65E5;&#x5FD7; access_log &#x6A21;&#x5757;&#x3002;</li>
+</ol>
+<p>&#x4EE5;&#x4E0A;&#x7684;&#x8FD9;&#x4E9B;&#x9636;&#x6BB5;&#x90FD;&#x662F;&#x4E25;&#x683C;&#x6309;&#x7167;&#x987A;&#x5E8F;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#xFF0C;&#x5F53;&#x7136;&#xFF0C;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x4E2D;&#x5404;&#x4E2A; HTTP &#x6A21;&#x5757;&#x7684;&#x5904;&#x7406;&#x987A;&#x5E8F;&#x4E5F;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x6A21;&#x5757;&#x4E0D;&#x628A;&#x8BF7;&#x6C42;&#x5411;&#x4E0B;&#x4F20;&#x9012;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x6A21;&#x5757;&#x662F;&#x63A5;&#x6536;&#x4E0D;&#x5230;&#x8BF7;&#x6C42;&#x7684;&#x3002;&#x800C;&#x4E14;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x4E2D;&#x7684;&#x6A21;&#x5757;&#x4E5F;&#x4E0D;&#x4E00;&#x5B9A;&#x6240;&#x6709;&#x90FD;&#x8981;&#x6267;&#x884C;&#x4E00;&#x904D;&#xFF0C;&#x4E0B;&#x9762;&#x5C31;&#x63A5;&#x7740;&#x8BB2;&#x4E00;&#x4E0B;&#x5404;&#x4E2A;&#x9636;&#x6BB5;&#x6A21;&#x5757;&#x4E4B;&#x95F4;&#x7684;&#x8BF7;&#x6C42;&#x987A;&#x5E8F;&#x3002;</p>
+<h2 id="11-&#x4E2A;&#x9636;&#x6BB5;&#x7684;&#x987A;&#x5E8F;&#x5904;&#x7406;">11 &#x4E2A;&#x9636;&#x6BB5;&#x7684;&#x987A;&#x5E8F;&#x5904;&#x7406;</h2>
+<p>&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x5904;&#x7406;&#x4E4B;&#x95F4;&#x662F;&#x6709;&#x5E8F;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x987A;&#x5E8F;&#x600E;&#x4E48;&#x624D;&#x80FD;&#x5F97;&#x5230;&#x5462;&#xFF1F;&#x5176;&#x5B9E;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x5728;&#x6E90;&#x7801; ngx_module.c &#x4E2D;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x6570;&#x7EC4; ngx_module_name&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x5728;&#x7F16;&#x8BD1; Nginx &#x7684;&#x65F6;&#x5019;&#x7684; with &#x6307;&#x4EE4;&#x6240;&#x5305;&#x542B;&#x7684;&#x6240;&#x6709;&#x6A21;&#x5757;&#xFF0C;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x7684;&#x987A;&#x5E8F;&#x975E;&#x5E38;&#x5173;&#x952E;&#xFF0C;&#x5728;&#x6570;&#x7EC4;&#x4E2D;&#x987A;&#x5E8F;&#x662F;&#x76F8;&#x53CD;&#x7684;&#x3002;</p>
+<pre><code>char *ngx_module_names[] = {
+    &#x2026; &#x2026;
+    &quot;ngx_http_static_module&quot;,
+    &quot;ngx_http_autoindex_module&quot;,
+    &quot;ngx_http_index_module&quot;,
+    &quot;ngx_http_random_index_module&quot;,
+    &quot;ngx_http_mirror_module&quot;,
+    &quot;ngx_http_try_files_module&quot;,
+    &quot;ngx_http_auth_request_module&quot;,
+    &quot;ngx_http_auth_basic_module&quot;,
+    &quot;ngx_http_access_module&quot;,
+    &quot;ngx_http_limit_conn_module&quot;,
+    &quot;ngx_http_limit_req_module&quot;,
+    &quot;ngx_http_realip_module&quot;,
+    &quot;ngx_http_referer_module&quot;,
+    &quot;ngx_http_rewrite_module&quot;,
+    &quot;ngx_http_concat_module&quot;,
+    &#x2026; &#x2026;
+}
+</code></pre><p>&#x7070;&#x8272;&#x90E8;&#x5206;&#x7684;&#x6A21;&#x5757;&#x662F; Nginx &#x7684;&#x6846;&#x67B6;&#x90E8;&#x5206;&#x53BB;&#x6267;&#x884C;&#x5904;&#x7406;&#x7684;&#xFF0C;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#x6CA1;&#x6709;&#x673A;&#x4F1A;&#x5728;&#x8FD9;&#x91CC;&#x5F97;&#x5230;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x5728;&#x4F9D;&#x6B21;&#x5411;&#x4E0B;&#x6267;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x4E0D;&#x6309;&#x7167;&#x8FD9;&#x6837;&#x7684;&#x987A;&#x5E8F;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728; access &#x9636;&#x6BB5;&#x4E2D;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x6307;&#x4EE4;&#x53EB; satisfy&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x6307;&#x793A;&#x5F53;&#x6709;&#x4E00;&#x4E2A;&#x6EE1;&#x8DB3;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x76F4;&#x63A5;&#x8DF3;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x9636;&#x6BB5;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x4F8B;&#x5982;&#x5F53; access &#x6EE1;&#x8DB3;&#x4E86;&#xFF0C;&#x5C31;&#x76F4;&#x63A5;&#x8DF3;&#x5230; try_files &#x6A21;&#x5757;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x518D;&#x6267;&#x884C; auth_basic&#x3001;auth_request &#x6A21;&#x5757;&#x3002;</p>
+<p>&#x5728; content &#x9636;&#x6BB5;&#x4E2D;&#xFF0C;&#x5F53; index &#x6A21;&#x5757;&#x6267;&#x884C;&#x4E86;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x518D;&#x6267;&#x884C; auto_index &#x6A21;&#x5757;&#xFF0C;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x8DF3;&#x5230; log &#x6A21;&#x5757;&#x3002;</p>
+<p>&#x6574;&#x4E2A; 11 &#x4E2A;&#x9636;&#x6BB5;&#x6240;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x6A21;&#x5757;&#x548C;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/c759ddaa15ec4a0fba477b2b7514abe9~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=acceAC%2BPFS%2B7ivlkkq1LeOm92Kg%3D" alt=""></p>
+<p>&#x4E0B;&#x9762;&#x5F00;&#x59CB;&#x8BE6;&#x7EC6;&#x8BB2;&#x89E3;&#x4E00;&#x4E0B;&#x5404;&#x4E2A;&#x9636;&#x6BB5;&#x3002;&#x5148;&#x6765;&#x770B;&#x4E0B;&#x7B2C;&#x4E00;&#x4E2A;&#x9636;&#x6BB5; postread &#x9636;&#x6BB5;&#xFF0C;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;postread &#x9636;&#x6BB5;&#x662F;&#x5728;&#x6B63;&#x5F0F;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x4E4B;&#x524D;&#x8D77;&#x4F5C;&#x7528;&#x7684;&#x3002;</p>
+<h2 id="postread-&#x9636;&#x6BB5;">postread &#x9636;&#x6BB5;</h2>
+<p>postread &#x9636;&#x6BB5;&#xFF0C;&#x662F; 11 &#x4E2A;&#x9636;&#x6BB5;&#x7684;&#x7B2C; 1 &#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x521A;&#x521A;&#x83B7;&#x53D6;&#x5230;&#x4E86;&#x8BF7;&#x6C42;&#x7684;&#x5934;&#x90E8;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x5904;&#x7406;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x62FF;&#x5230;&#x4E00;&#x4E9B;&#x539F;&#x59CB;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x62FF;&#x5230;&#x7528;&#x6237;&#x7684;&#x771F;&#x5B9E; IP &#x5730;&#x5740;</p>
+<h2 id="&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x4F55;&#x62FF;&#x5230;&#x7528;&#x6237;&#x7684;&#x771F;&#x5B9E;-ip-&#x5730;&#x5740;&#xFF1F;">&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x4F55;&#x62FF;&#x5230;&#x7528;&#x6237;&#x7684;&#x771F;&#x5B9E; IP &#x5730;&#x5740;&#xFF1F;</h2>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/7dc698df6efd4928920d1113c50497cd~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=FGp%2BqzNAXT7D7MTVYvrB0dLWdcU%3D" alt=""></p>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;TCP &#x8FDE;&#x63A5;&#x662F;&#x7531;&#x4E00;&#x4E2A;&#x56DB;&#x5143;&#x7EC4;&#x6784;&#x6210;&#x7684;&#xFF0C;&#x5728;&#x56DB;&#x5143;&#x7EC4;&#x4E2D;&#xFF0C;&#x5305;&#x542B;&#x4E86;&#x6E90; IP &#x5730;&#x5740;&#x3002;&#x800C;&#x5728;&#x771F;&#x5B9E;&#x7684;&#x4E92;&#x8054;&#x7F51;&#x4E2D;&#xFF0C;&#x5B58;&#x5728;&#x975E;&#x5E38;&#x591A;&#x7684;&#x6B63;&#x5411;&#x4EE3;&#x7406;&#x548C;&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x3002;&#x4F8B;&#x5982;&#x6700;&#x7EC8;&#x7684;&#x7528;&#x6237;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x5185;&#x7F51; IP &#x5730;&#x5740;&#xFF0C;&#x8FD0;&#x8425;&#x5546;&#x4F1A;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x516C;&#x7F51; IP&#xFF0C;&#x7136;&#x540E;&#x8BBF;&#x95EE;&#x67D0;&#x4E2A;&#x7F51;&#x7AD9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A;&#x7F51;&#x7AD9;&#x53EF;&#x80FD;&#x4F7F;&#x7528;&#x4E86; CDN &#x52A0;&#x901F;&#x4E00;&#x4E9B;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x6216;&#x56FE;&#x7247;&#xFF0C;&#x5982;&#x679C; CDN &#x6CA1;&#x6709;&#x547D;&#x4E2D;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x56DE;&#x6E90;&#xFF0C;&#x56DE;&#x6E90;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x8FD8;&#x8981;&#x7ECF;&#x8FC7;&#x4E00;&#x4E2A;&#x53CD;&#x5411;&#x4EE3;&#x7406;&#xFF0C;&#x4F8B;&#x5982;&#x963F;&#x91CC;&#x4E91;&#x7684; SLB&#xFF0C;&#x7136;&#x540E;&#x624D;&#x4F1A;&#x5230;&#x8FBE; Nginx&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x8981;&#x62FF;&#x5230;&#x7684;&#x5730;&#x5740;&#x5E94;&#x8BE5;&#x662F;&#x8FD0;&#x8425;&#x5546;&#x7ED9;&#x7528;&#x6237;&#x5206;&#x914D;&#x7684;&#x516C;&#x7F51; IP &#x5730;&#x5740; 115.204.33.1&#xFF0C;&#x5BF9;&#x8FD9;&#x4E2A; IP &#x6765;&#x8FDB;&#x884C;&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x7684;&#x63A7;&#x5236;&#x6216;&#x8005;&#x9650;&#x901F;&#xFF0C;&#x800C; Nginx &#x62FF;&#x5230;&#x7684;&#x5374;&#x662F; 2.2.2.2&#xFF0C;&#x90A3;&#x4E48;&#x600E;&#x4E48;&#x624D;&#x80FD;&#x62FF;&#x5230;&#x771F;&#x5B9E;&#x7684;&#x7528;&#x6237; IP &#x5462;&#xFF1F;</p>
+<p>HTTP &#x534F;&#x8BAE;&#x4E2D;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x5934;&#x90E8;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x83B7;&#x53D6;&#x7528;&#x6237; IP&#xFF1A;</p>
+<ul>
+<li>X-Forwardex-For &#x662F;&#x7528;&#x6765;&#x4F20;&#x9012; IP &#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x5934;&#x90E8;&#x4F1A;&#x628A;&#x7ECF;&#x8FC7;&#x7684;&#x8282;&#x70B9; IP &#x90FD;&#x8BB0;&#x5F55;&#x4E0B;&#x6765;</li>
+<li>X-Real-IP&#xFF1A;&#x53EF;&#x4EE5;&#x8BB0;&#x5F55;&#x7528;&#x6237;&#x771F;&#x5B9E;&#x7684; IP &#x5730;&#x5740;&#xFF0C;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;</li>
+</ul>
+<h2 id="&#x62FF;&#x5230;&#x771F;&#x5B9E;&#x7528;&#x6237;-ip-&#x540E;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#xFF1F;">&#x62FF;&#x5230;&#x771F;&#x5B9E;&#x7528;&#x6237; IP &#x540E;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#xFF1F;</h2>
+<p>&#x9488;&#x5BF9;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;Nginx &#x662F;&#x57FA;&#x4E8E;&#x53D8;&#x91CF;&#x6765;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x4F8B;&#x5982; binary_remote_addr&#x3001;remote_addr &#x8FD9;&#x6837;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5176;&#x503C;&#x5C31;&#x662F;&#x771F;&#x5B9E;&#x7684; IP&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x8FDE;&#x63A5;&#x9650;&#x5236;&#x4E5F;&#x5C31;&#x662F; limit_conn &#x6A21;&#x5757;&#x624D;&#x6709;&#x610F;&#x4E49;&#xFF0C;&#x8FD9;&#x4E5F;&#x8BF4;&#x660E;&#x4E86;&#xFF0C;limit_conn &#x6A21;&#x5757;&#x53EA;&#x80FD;&#x5728; preaccess &#x9636;&#x6BB5;&#xFF0C;&#x800C;&#x4E0D;&#x80FD;&#x5728; postread &#x9636;&#x6BB5;&#x751F;&#x6548;&#x3002;</p>
+<h2 id="realip-&#x6A21;&#x5757;">realip &#x6A21;&#x5757;</h2>
+<ul>
+<li>&#x9ED8;&#x8BA4;&#x4E0D;&#x4F1A;&#x7F16;&#x8BD1;&#x8FDB; Nginx&#x9700;&#x8981;&#x901A;&#x8FC7; --with-http_realip_module &#x542F;&#x7528;&#x529F;&#x80FD;</li>
+<li>&#x53D8;&#x91CF;&#xFF1A;&#x5982;&#x679C;&#x8FD8;&#x60F3;&#x8981;&#x4F7F;&#x7528;&#x539F;&#x6765;&#x7684; TCP &#x8FDE;&#x63A5;&#x4E2D;&#x7684;&#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x8FD9;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x4FDD;&#x5B58;realip_remote_addrrealip_remote_port</li>
+<li>&#x529F;&#x80FD;&#x4FEE;&#x6539;&#x5BA2;&#x6237;&#x7AEF;&#x5730;&#x5740;</li>
+<li>&#x6307;&#x4EE4;set_real_ip_from&#x6307;&#x5B9A;&#x53EF;&#x4FE1;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x53EA;&#x6709;&#x4ECE;&#x8BE5;&#x5730;&#x5740;&#x5EFA;&#x7ACB;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x83B7;&#x53D6;&#x7684; realip &#x624D;&#x662F;&#x53EF;&#x4FE1;&#x7684;real_ip_header&#x6307;&#x5B9A;&#x4ECE;&#x54EA;&#x4E2A;&#x5934;&#x90E8;&#x53D6;&#x771F;&#x5B9E;&#x7684; IP &#x5730;&#x5740;&#xFF0C;&#x9ED8;&#x8BA4;&#x4ECE; X-Real-IP &#x4E2D;&#x53D6;&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4ECE; X-Forwarded-For &#x4E2D;&#x53D6;&#xFF0C;&#x4F1A;&#x5148;&#x4ECE;&#x6700;&#x540E;&#x4E00;&#x4E2A; IP &#x5F00;&#x59CB;&#x53D6;real_ip_recursive&#x73AF;&#x56DE;&#x5730;&#x5740;&#xFF0C;&#x9ED8;&#x8BA4;&#x5173;&#x95ED;&#xFF0C;&#x6253;&#x5F00;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C; X-Forwarded-For &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5730;&#x5740;&#x4E0E;&#x5BA2;&#x6237;&#x7AEF;&#x5730;&#x5740;&#x76F8;&#x540C;&#xFF0C;&#x4F1A;&#x8FC7;&#x6EE4;&#x6389;&#x8BE5;&#x5730;&#x5740;</li>
+</ul>
+<pre><code>Syntax: set_real_ip_from address | CIDR | unix:;
+Default: &#x2014;
+Context: http, server, location
+
+Syntax: real_ip_header field | X-Real-IP | X-Forwarded-For | proxy_protocol;
+Default: real_ip_header X-Real-IP; 
+Context: http, server, location
+
+Syntax: real_ip_recursive on | off;
+Default: real_ip_recursive off; 
+Context: http, server, location
+</code></pre><h2 id="&#x5B9E;&#x6218;">&#x5B9E;&#x6218;</h2>
+<p>&#x4E0A;&#x9762;&#x5173;&#x4E8E; real_ip_recursive &#x6307;&#x4EE4;&#x53EF;&#x80FD;&#x4E0D;&#x592A;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5B9E;&#x6218;&#x7EC3;&#x4E60;&#x4E00;&#x4E0B;&#xFF0C;&#x5148;&#x6765;&#x770B; real_ip_recursive &#x9ED8;&#x8BA4;&#x5173;&#x95ED;&#x7684;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ul>
+<li>&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x4E00;&#x4E2A;&#x5E26;&#x6709; realip &#x6A21;&#x5757;&#x7684; nginx</li>
+</ul>
+<blockquote>
+<p>&#x5173;&#x4E8E;&#x5982;&#x4F55;&#x7F16;&#x8BD1; Nginx&#xFF0C;&#x8BE6;&#x89C1;&#xFF1A;<a href="https://iziyang.github.io/2020/03/10/1-nginx/" target="_blank">https://iziyang.github.io/2020/03/10/1-nginx/</a></p>
+</blockquote>
+<pre><code># &#x4E0B;&#x8F7D; nginx &#x6E90;&#x7801;&#xFF0C;&#x5728;&#x6E90;&#x7801;&#x76EE;&#x5F55;&#x4E0B;&#x6267;&#x884C;
+./configure --prefix=&#x81EA;&#x5DF1;&#x6307;&#x5B9A;&#x7684;&#x76EE;&#x5F55; --with-http_realip_module
+make
+make install
+</code></pre><ul>
+<li>&#x7136;&#x540E;&#x53BB;&#x4E0A;&#x4E00;&#x6B65;&#x4E2D;&#x81EA;&#x5DF1;&#x6307;&#x5B9A;&#x7684; Nginx &#x5B89;&#x88C5;&#x76EE;&#x5F55;</li>
+</ul>
+<pre><code>#&#x5C4F;&#x853D;&#x9ED8;&#x8BA4;&#x7684; nginx.conf &#x6587;&#x4EF6;&#x7684; server &#x5757;&#x5185;&#x5BB9;&#xFF0C;&#x5E76;&#x6DFB;&#x52A0;&#x4E00;&#x884C;
+include /Users/mtdp/myproject/nginx/test_nginx/conf/example/*.conf;
+</code></pre><pre><code># &#x5728; example &#x76EE;&#x5F55;&#x4E0B;&#x5EFA;&#x7ACB; realip.conf&#xFF0C;set_real_ip_from &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E3A;&#x81EA;&#x5DF1;&#x7684;&#x672C;&#x673A; IP
+server {
+    listen 80;
+    server_name ziyang.realip.com;
+    error_log /Users/mtdp/myproject/nginx/nginx/logs/myerror.log debug;
+    set_real_ip_from 192.168.0.108;
+    #real_ip_header X-Real-IP;
+    real_ip_recursive off;
+    # real_ip_recursive on;
+    real_ip_header X-Forwarded-For;
+
+    location / {
+        return 200 &quot;Client real ip: $remote_addr\n&quot;;
+    }
+}
+</code></pre><p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x6211;&#x8BBE;&#x7F6E;&#x4E86;&#x53EF;&#x4FE1;&#x4EE3;&#x7406;&#x5730;&#x5740;&#x4E3A;&#x672C;&#x673A;&#x5730;&#x5740;&#xFF0C;real_ip_recursive &#x4E3A;&#x9ED8;&#x8BA4;&#x7684; off&#xFF0C;real_ip_header &#x8BBE;&#x4E3A;&#x4ECE; X-Forwarded-For &#x4E2D;&#x53D6;&#x3002;</p>
+<ul>
+<li>&#x91CD;&#x8F7D;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</li>
+</ul>
+<pre><code>./sbin/nginx -s reload
+</code></pre><ul>
+<li>&#x6D4B;&#x8BD5;&#x54CD;&#x5E94;&#x7ED3;&#x679C;</li>
+</ul>
+<pre><code>&#x279C;  test_nginx curl -H &apos;X-Forwarded-For: 1.1.1.1,192.168.0.108&apos; ziyang.realip.com
+Client real ip: 192.168.0.108
+</code></pre><p>&#x7136;&#x540E;&#x518D;&#x6765;&#x6D4B;&#x8BD5; real_ip_recursive &#x6253;&#x5F00;&#x7684;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ul>
+<li>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x6253;&#x5F00; real_ip_recursive</li>
+</ul>
+<pre><code>server {
+    listen 80;
+    server_name ziyang.realip.com;
+    error_log /Users/mtdp/myproject/nginx/nginx/logs/myerror.log debug;
+    set_real_ip_from 192.168.0.108;
+    #real_ip_header X-Real-IP;
+    #real_ip_recursive off;
+    real_ip_recursive on;
+    real_ip_header X-Forwarded-For;
+
+    location / {
+        return 200 &quot;Client real ip: $remote_addr\n&quot;;
+    }
+}
+</code></pre><ul>
+<li>&#x6D4B;&#x8BD5;&#x54CD;&#x5E94;&#x7ED3;&#x679C;</li>
+</ul>
+<pre><code>&#x279C;  test_nginx curl -H &apos;X-Forwarded-For: 1.1.1.1,2.2.2.2,192.168.0.108&apos; ziyang.realip.com
+Client real ip: 2.2.2.2
+</code></pre><p>&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x9762;&#x4E5F;&#x53EF;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528; X-Forwarded-For &#x83B7;&#x53D6; realip &#x7684;&#x8BDD;&#xFF0C;&#x9700;&#x8981;&#x6253;&#x5F00; real_ip_recursive&#xFF0C;&#x5E76;&#x4E14;&#xFF0C;realip &#x4F9D;&#x8D56;&#x4E8E; set_real_ip_from &#x8BBE;&#x7F6E;&#x7684;&#x53EF;&#x4FE1;&#x5730;&#x5740;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x6709;&#x4EBA;&#x53EF;&#x80FD;&#x5C31;&#x4F1A;&#x95EE;&#x4E86;&#xFF0C;&#x90A3;&#x76F4;&#x63A5;&#x7528; X-Real-IP &#x6765;&#x9009;&#x53D6;&#x771F;&#x5B9E;&#x7684; IP &#x5730;&#x5740;&#x4E0D;&#x5C31;&#x597D;&#x4E86;&#x3002;&#x8FD9;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#xFF0C;&#x4F46;&#x662F; X-Real-IP &#x662F; Nginx &#x72EC;&#x6709;&#x7684;&#xFF0C;&#x4E0D;&#x662F; RFC &#x89C4;&#x8303;&#xFF0C;&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x975E; Nginx &#x8F6F;&#x4EF6;&#x5B9E;&#x73B0;&#x7684;&#x4EE3;&#x7406;&#xFF0C;&#x5C31;&#x4F1A;&#x9020;&#x6210;&#x53D6;&#x4E0D;&#x5230; X-Real-IP &#x5934;&#x90E8;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x8981;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x6765;&#x5B9A;&#x3002;</p>
+<h2 id="rewrite-&#x9636;&#x6BB5;&#x7684;-rewrite-&#x6A21;&#x5757;">rewrite &#x9636;&#x6BB5;&#x7684; rewrite &#x6A21;&#x5757;</h2>
+<p>&#x4E0B;&#x9762;&#x6765;&#x770B;&#x4E00;&#x4E0B; rewrite &#x6A21;&#x5757;&#x3002;</p>
+<p>&#x9996;&#x5148; rewrite &#x9636;&#x6BB5;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#xFF0C;&#x4E00;&#x4E2A;&#x662F; server_rewrite &#x9636;&#x6BB5;&#xFF0C;&#x4E00;&#x4E2A;&#x662F; rewrite&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#x90FD;&#x6D89;&#x53CA;&#x5230;&#x4E00;&#x4E2A; rewrite &#x6A21;&#x5757;&#xFF0C;&#x800C;&#x5728; rewrite &#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x6709;&#x4E00;&#x4E2A; return &#x6307;&#x4EE4;&#xFF0C;&#x9047;&#x5230;&#x8BE5;&#x6307;&#x4EE4;&#x5C31;&#x4E0D;&#x4F1A;&#x518D;&#x5411;&#x4E0B;&#x6267;&#x884C;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x54CD;&#x5E94;&#x3002;</p>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/fccab2c581c141db94377fe1afe96980~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=FE5nlsnfIpeWwGWOYQneDF01TW0%3D" alt=""></p>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/5931693faacc4447a9366a99e4785947~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=3w0IdfXf8DEdTmLJ2FZHS3mzMVI%3D" alt=""></p>
+<h2 id="return-&#x6307;&#x4EE4;">return &#x6307;&#x4EE4;</h2>
+<p>return &#x6307;&#x4EE4;&#x7684;&#x8BED;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x72B6;&#x6001;&#x7801;&#xFF0C;&#x540E;&#x9762;&#x8DDF;&#x4E0A; body</li>
+<li>&#x8FD4;&#x56DE;&#x72B6;&#x6001;&#x7801;&#xFF0C;&#x540E;&#x9762;&#x8DDF;&#x4E0A; URL</li>
+<li>&#x76F4;&#x63A5;&#x8FD4;&#x56DE; URL</li>
+</ul>
+<pre><code>Syntax: return code [text];
+        return code URL;
+        return URL;
+Default: &#x2014;
+Context: server, location, if
+</code></pre><p>&#x8FD4;&#x56DE;&#x72B6;&#x6001;&#x7801;&#x5305;&#x62EC;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>Nginx &#x81EA;&#x5B9A;&#x4E49;444&#xFF1A;&#x7ACB;&#x523B;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#xFF0C;&#x7528;&#x6237;&#x6536;&#x4E0D;&#x5230;&#x54CD;&#x5E94;</li>
+<li>HTTP 1.0 &#x6807;&#x51C6;301&#xFF1A;&#x6C38;&#x4E45;&#x91CD;&#x5B9A;&#x5411;302&#xFF1A;&#x4E34;&#x65F6;&#x91CD;&#x5B9A;&#x5411;&#xFF0C;&#x7981;&#x6B62;&#x88AB;&#x7F13;&#x5B58;</li>
+<li>HTTP 1.1 &#x6807;&#x51C6;303&#xFF1A;&#x4E34;&#x65F6;&#x91CD;&#x5B9A;&#x5411;&#xFF0C;&#x5141;&#x8BB8;&#x6539;&#x53D8;&#x65B9;&#x6CD5;&#xFF0C;&#x7981;&#x6B62;&#x88AB;&#x7F13;&#x5B58;307&#xFF1A;&#x4E34;&#x65F6;&#x91CD;&#x5B9A;&#x5411;&#xFF0C;&#x4E0D;&#x5141;&#x8BB8;&#x6539;&#x53D8;&#x65B9;&#x6CD5;&#xFF0C;&#x7981;&#x6B62;&#x88AB;&#x7F13;&#x5B58;308&#xFF1A;&#x6C38;&#x4E45;&#x91CD;&#x5B9A;&#x5411;&#xFF0C;&#x4E0D;&#x5141;&#x8BB8;&#x6539;&#x53D8;&#x65B9;&#x6CD5;</li>
+</ul>
+<h3 id="return-&#x6307;&#x4EE4;&#x4E0E;-errorpage">return &#x6307;&#x4EE4;&#x4E0E; error_page</h3>
+<p>error_page &#x7684;&#x4F5C;&#x7528;&#x5927;&#x5BB6;&#x80AF;&#x5B9A;&#x7ECF;&#x5E38;&#x89C1;&#x5230;&#x3002;&#x5F53;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;&#x7F51;&#x7AD9;&#x51FA;&#x73B0; 404 &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x76F4;&#x63A5;&#x51FA;&#x73B0;&#x4E00;&#x4E2A; 404 NOT FOUND&#xFF0C;&#x800C;&#x662F;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x53CB;&#x597D;&#x7684;&#x9875;&#x9762;&#xFF0C;&#x8FD9;&#x5C31;&#x662F; error_page &#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<pre><code>Syntax: error_page code ... [=[response]] uri;
+Default: &#x2014;
+Context: http, server, location, if in location
+</code></pre><p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x51E0;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code>1. error_page 404 /404.html; 
+2. error_page 500 502 503 504 /50x.html;
+3. error_page 404 =200 /empty.gif; 
+4. error_page 404 = /404.php; 
+5. location / { 
+       error_page 404 = @fallback; 
+   } 
+   location @fallback { 
+       proxy_pass http://backend; 
+   } 
+6. error_page 403 http://example.com/forbidden.html; 
+7. error_page 404 =301 http://example.com/notfound.html;
+</code></pre><p>&#x90A3;&#x4E48;&#x73B0;&#x5728;&#x5C31;&#x4F1A;&#x6709;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5927;&#x5BB6;&#x770B;&#x4E0B;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code>server {
+    server_name ziyang.return.com;
+    listen 80;
+    root html/;
+    error_page 404 /403.html;
+    #return 405;
+    location / {
+        #return 404 &quot;find nothing!&quot;;
+    }
+}
+</code></pre><ol>
+<li>&#x5F53; server &#x4E0B;&#x5305;&#x542B; error_page &#x4E14; location &#x4E0B;&#x6709; return &#x6307;&#x4EE4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x6267;&#x884C;&#x54EA;&#x4E00;&#x4E2A;&#x5462;&#xFF1F;</li>
+<li>return &#x6307;&#x4EE4;&#x540C;&#x65F6;&#x51FA;&#x73B0;&#x5728; server &#x5757;&#x4E0B;&#x548C;&#x540C;&#x65F6;&#x51FA;&#x73B0;&#x5728; location &#x5757;&#x4E0B;&#xFF0C;&#x5B83;&#x4EEC;&#x6709;&#x5408;&#x5E76;&#x5173;&#x7CFB;&#x5417;&#xFF1F;</li>
+</ol>
+<p>&#x8FD9;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x5B9E;&#x6218;&#x9A8C;&#x8BC1;&#x4E00;&#x4E0B;&#x3002;</p>
+<h3 id="&#x5B9E;&#x6218;">&#x5B9E;&#x6218;</h3>
+<ul>
+<li>&#x5C06;&#x4E0A;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x6DFB;&#x52A0;&#x5230;&#x914D;&#x7F6E;&#x6587;&#x4EF6; return.conf</li>
+<li>&#x5728;&#x672C;&#x673A;&#x7684; hosts &#x6587;&#x4EF6;&#x4E2D;&#x7ED1;&#x5B9A; ziyang.return.com &#x4E3A;&#x672C;&#x5730;&#x7684; IP &#x5730;&#x5740;</li>
+<li>&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x9875;&#x9762;</li>
+</ul>
+<pre><code>&#x279C;  test_nginx curl  ziyang.return.com/text
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;403 Forbidden&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;403 Forbidden&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.17.8&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x662F; error_page &#x751F;&#x6548;&#x4E86;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x54CD;&#x5E94;&#x662F; 403&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x5047;&#x5982;&#x6253;&#x5F00;&#x4E86; location &#x4E0B; return &#x6307;&#x4EE4;&#x7684;&#x6CE8;&#x91CA;&#x5462;&#xFF1F;</p>
+<ul>
+<li>&#x6253;&#x5F00; return &#x6307;&#x4EE4;&#x6CE8;&#x91CA;&#xFF0C;reload &#x914D;&#x7F6E;&#x6587;&#x4EF6;</li>
+<li>&#x91CD;&#x65B0;&#x8BBF;&#x95EE;&#x9875;&#x9762;</li>
+</ul>
+<pre><code>&#x279C;  test_nginx curl  ziyang.return.com/text
+find nothing!%
+</code></pre><p>&#x8FD9;&#x65F6;&#x5019;&#xFF0C;return &#x6307;&#x4EE4;&#x5F97;&#x5230;&#x4E86;&#x6267;&#x884C;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5F53; server &#x4E0B;&#x5305;&#x542B; error_page &#x4E14; location &#x4E0B;&#x6709; return &#x6307;&#x4EE4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x6267;&#x884C; return &#x6307;&#x4EE4;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x518D;&#x770B;&#x4E00;&#x4E0B; server &#x4E0B;&#x7684; return &#x6307;&#x4EE4;&#x548C; location &#x4E0B;&#x7684; return &#x6307;&#x4EE4;&#x4F1A;&#x6267;&#x884C;&#x54EA;&#x4E00;&#x4E2A;&#x3002;</p>
+<ul>
+<li>&#x6253;&#x5F00; server &#x4E0B; return &#x6307;&#x4EE4;&#x7684;&#x6CE8;&#x91CA;&#xFF0C;reload &#x914D;&#x7F6E;&#x6587;&#x4EF6;</li>
+<li>&#x91CD;&#x65B0;&#x8BBF;&#x95EE;&#x9875;&#x9762;</li>
+</ul>
+<pre><code>&#x279C;  test_nginx curl  ziyang.return.com/text
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 Not Allowed&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;405 Not Allowed&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.17.8&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>&#x9488;&#x5BF9;&#x4E0A;&#x9762;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#x4E5F;&#x5C31;&#x6709;&#x4E86;&#x7B54;&#x6848;&#xFF1A;</p>
+<ol>
+<li>&#x5F53; server &#x4E0B;&#x5305;&#x542B; error_page &#x4E14; location &#x4E0B;&#x6709; return &#x6307;&#x4EE4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x6267;&#x884C;&#x54EA;&#x4E00;&#x4E2A;&#x5462;&#xFF1F;&#x4F1A;&#x6267;&#x884C; location &#x4E0B;&#x7684; return &#x6307;&#x4EE4;&#x3002;</li>
+<li>return &#x6307;&#x4EE4;&#x540C;&#x65F6;&#x51FA;&#x73B0;&#x5728; server &#x5757;&#x4E0B;&#x548C;&#x540C;&#x65F6;&#x51FA;&#x73B0;&#x5728; location &#x5757;&#x4E0B;&#xFF0C;&#x5B83;&#x4EEC;&#x6709;&#x5408;&#x5E76;&#x5173;&#x7CFB;&#x5417;&#xFF1F;&#x6CA1;&#x6709;&#x5408;&#x5E76;&#x5173;&#x7CFB;&#xFF0C;&#x5148;&#x9047;&#x5230;&#x54EA;&#x4E2A; return &#x6307;&#x4EE4;&#x5C31;&#x5148;&#x6267;&#x884C;&#x54EA;&#x4E00;&#x4E2A;&#x3002;</li>
+</ol>
+<h2 id="rewrite-&#x6307;&#x4EE4;">rewrite &#x6307;&#x4EE4;</h2>
+<p>rewrite &#x6307;&#x4EE4;&#x7528;&#x4E8E;&#x4FEE;&#x6539;&#x7528;&#x6237;&#x4F20;&#x5165; Nginx &#x7684; URL&#x3002;&#x6765;&#x770B;&#x4E0B; rewrite &#x7684;&#x6307;&#x4EE4;&#x89C4;&#x5219;&#xFF1A;</p>
+<pre><code>Syntax: rewrite regex replacement [flag];
+Default: &#x2014;
+Context: server, location, if
+</code></pre><p>&#x5B83;&#x7684;&#x529F;&#x80FD;&#x4E3B;&#x8981;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>&#x5C06; regex &#x6307;&#x5B9A;&#x7684; URL &#x66FF;&#x6362;&#x6210; replacement &#x8FD9;&#x4E2A;&#x65B0;&#x7684; URL&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x53CA;&#x53D8;&#x91CF;&#x63D0;&#x53D6;</li>
+<li>&#x5F53; replacement &#x4EE5; http:// &#x6216;&#x8005; https:// &#x6216;&#x8005; $schema &#x5F00;&#x5934;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE; 302 &#x91CD;&#x5B9A;&#x5411;</li>
+<li>&#x66FF;&#x6362;&#x540E;&#x7684; URL &#x6839;&#x636E; flag &#x6307;&#x5B9A;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x5904;&#x7406;last&#xFF1A;&#x7528; replacement &#x8FD9;&#x4E2A; URL &#x8FDB;&#x884C;&#x65B0;&#x7684; location &#x5339;&#x914D;break&#xFF1A;break &#x6307;&#x4EE4;&#x505C;&#x6B62;&#x5F53;&#x524D;&#x811A;&#x672C;&#x6307;&#x4EE4;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x7B49;&#x4EF7;&#x4E8E;&#x72EC;&#x7ACB;&#x7684; break &#x6307;&#x4EE4;redirect&#xFF1A;&#x8FD4;&#x56DE; 302 &#x91CD;&#x5B9A;&#x5411;permanent&#xFF1A;&#x8FD4;&#x56DE; 301 &#x91CD;&#x5B9A;&#x5411;</li>
+</ul>
+<h3 id="&#x6307;&#x4EE4;&#x793A;&#x4F8B;">&#x6307;&#x4EE4;&#x793A;&#x4F8B;</h3>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#xFF1A;</p>
+<pre><code>html/first/
+&#x2514;&#x2500;&#x2500; 1.txt
+html/second/
+&#x2514;&#x2500;&#x2500; 2.txt
+html/third/
+&#x2514;&#x2500;&#x2500; 3.txt
+</code></pre><p>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>server {
+    listen 80;
+    server_name rewrite.ziyang.com;
+    rewrite_log on;
+    error_log logs/rewrite_error.log notice;
+
+    root html/;
+    location /first {
+        rewrite /first(.*) /second$1 last;
+        return 200 &apos;first!\n&apos;;
+    }
+
+    location /second {
+        rewrite /second(.*) /third$1;
+        return 200 &apos;second!\n&apos;;
+    }
+
+    location /third {
+        return 200 &apos;third!\n&apos;;
+    }
+    location /redirect1 {
+        rewrite /redirect1(.*) $1 permanent;
+    }
+
+    location /redirect2 {
+        rewrite /redirect2(.*) $1 redirect;
+    }
+
+    location /redirect3 {
+        rewrite /redirect3(.*) http://rewrite.ziyang.com$1;
+    }
+
+    location /redirect4 {
+        rewrite /redirect4(.*) http://rewrite.ziyang.com$1 permanent;
+    }
+}
+</code></pre><p>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x7684;&#x95EE;&#x9898;&#x662F;&#xFF1A;</p>
+<ol>
+<li>return &#x6307;&#x4EE4; &#x4E0E; rewrite &#x6307;&#x4EE4;&#x7684;&#x987A;&#x5E8F;&#x5173;&#x7CFB;&#xFF1F;</li>
+<li>&#x8BBF;&#x95EE; /first/3.txt&#xFF0C;/second/3.txt&#xFF0C;/third/3.txt &#x5206;&#x522B;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</li>
+<li>&#x5982;&#x679C;&#x4E0D;&#x643A;&#x5E26; flag &#x4F1A;&#x600E;&#x4E48;&#x6837;&#xFF1F;</li>
+</ol>
+<p>&#x5E26;&#x7740;&#x8FD9;&#x4E09;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5B9E;&#x9645;&#x6F14;&#x793A;&#x4E00;&#x4E0B;&#x3002;</p>
+<h3 id="&#x5B9E;&#x6218;">&#x5B9E;&#x6218;</h3>
+<p><strong>&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</strong></p>
+<ul>
+<li>&#x5C06;&#x4E0A;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x6DFB;&#x52A0;&#x5230;&#x914D;&#x7F6E;&#x6587;&#x4EF6; rewrite.conf</li>
+<li>&#x5728;&#x672C;&#x673A;&#x7684; hosts &#x6587;&#x4EF6;&#x4E2D;&#x7ED1;&#x5B9A; rewrite.ziyang.com &#x4E3A; 127.0.0.1</li>
+</ul>
+<p><strong>last flag</strong></p>
+<p>&#x9996;&#x5148;&#x8BBF;&#x95EE; rewrite.ziyang.com/first/3.txt&#xFF0C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>&#x279C;  ~ curl rewrite.ziyang.com/first/3.txt
+second!
+</code></pre><p>&#x4E3A;&#x4EC0;&#x4E48;&#x7ED3;&#x679C;&#x662F; second! &#x5462;&#xFF1F;&#x5E94;&#x8BE5;&#x662F; third! &#x5440;&#xFF0C;&#x53EF;&#x80FD;&#x6709;&#x4EBA;&#x4F1A;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x7591;&#x95EE;&#x3002;&#x5B9E;&#x9645;&#x7684;&#x5339;&#x914D;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>curl rewrite.ziyang.com/first/3.txt</li>
+<li>&#x7531;&#x4E8E; rewrite /first(.*) /second$1 last; &#x8FD9;&#x6761;&#x6307;&#x4EE4;&#x7684;&#x5B58;&#x5728;&#xFF0C;last &#x8868;&#x793A;&#x4F7F;&#x7528;&#x65B0;&#x7684; URL &#x8FDB;&#x884C; location &#x5339;&#x914D;&#xFF0C;&#x56E0;&#x6B64;&#x63A5;&#x4E0B;&#x6765;&#x4F1A;&#x53BB;&#x5339;&#x914D; second/3.txt</li>
+<li>&#x5339;&#x914D;&#x5230; /second &#x5757;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x6307;&#x4EE4;&#xFF0C;&#x6700;&#x540E;&#x8FD4;&#x56DE; 200</li>
+<li>&#x6CE8;&#x610F;&#xFF0C;location &#x5757;&#x4E2D;&#x867D;&#x7136;&#x4E5F;&#x6539;&#x5199;&#x4E86; URL&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x4F1A;&#x53BB;&#x7EE7;&#x7EED;&#x5339;&#x914D;&#xFF0C;&#x56E0;&#x4E3A;&#x540E;&#x9762;&#x6CA1;&#x6709;&#x6307;&#x5B9A; flag&#x3002;</li>
+</ul>
+<p><strong>break flag</strong></p>
+<p>&#x4E0B;&#x9762;&#x5C06; rewrite /second(.*) /third$1; &#x8FD9;&#x6761;&#x6307;&#x4EE4;&#x52A0;&#x4E0A; break flag&#xFF0C;rewrite /second(.*) /third$1 break;</p>
+<p>&#x7EE7;&#x7EED;&#x8BBF;&#x95EE; rewrite.ziyang.com/first/3.txt&#xFF0C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>&#x279C;  ~ curl rewrite.ziyang.com/first/3.txt
+test3%
+</code></pre><p>&#x8FD9;&#x65F6;&#x5019;&#x8FD4;&#x56DE;&#x7684;&#x662F; 3.txt &#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9; test3&#x3002;&#x5B9E;&#x9645;&#x7684;&#x5339;&#x914D;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>curl rewrite.ziyang.com/first/3.txt</li>
+<li>&#x7531;&#x4E8E; rewrite /first(.*) /second$1 last; &#x8FD9;&#x6761;&#x6307;&#x4EE4;&#x7684;&#x5B58;&#x5728;&#xFF0C;last &#x8868;&#x793A;&#x4F7F;&#x7528;&#x65B0;&#x7684; URL &#x8FDB;&#x884C; location &#x5339;&#x914D;&#xFF0C;&#x56E0;&#x6B64;&#x63A5;&#x4E0B;&#x6765;&#x4F1A;&#x53BB;&#x5339;&#x914D; second/3.txt</li>
+<li>&#x5339;&#x914D;&#x5230; /second &#x5757;&#x4E4B;&#x540E;&#xFF0C;&#x7531;&#x4E8E; break flag &#x7684;&#x5B58;&#x5728;&#xFF0C;&#x4F1A;&#x7EE7;&#x7EED;&#x5339;&#x914D; rewrite &#x8FC7;&#x540E;&#x7684; URL</li>
+<li>&#x5339;&#x914D; /third location</li>
+</ul>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x5B9E;&#x9645;&#x8BF7;&#x6C42;&#x7684; URL &#x662F; rewrite.ziyang.com/third/3.txt&#xFF0C;&#x8FD9;&#x6837;&#x81EA;&#x7136;&#x7ED3;&#x679C;&#x5C31;&#x662F; test3 &#x4E86;&#x3002;&#x4F60;&#x8FD8;&#x53EF;&#x4EE5;&#x8BD5;&#x8BD5;&#x8BBF;&#x95EE; rewrite.ziyang.com/third/2.txt &#x770B;&#x770B;&#x4F1A;&#x8FD4;&#x56DE;&#x4EC0;&#x4E48;&#x3002;</p>
+<p><strong>redirect &#x548C; permanent flag</strong></p>
+<p>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x8FD8;&#x6709; 4 &#x4E2A; location&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5206;&#x522B;&#x8BD5;&#x7740;&#x8BBF;&#x95EE;&#x4E00;&#x4E0B;&#xFF0C;&#x7ED3;&#x679C;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<ul>
+<li>redirect1&#xFF1A;&#x8FD4;&#x56DE; 301</li>
+<li>redirect2&#xFF1A;&#x8FD4;&#x56DE; 302</li>
+<li>redirect3&#xFF1A;&#x8FD4;&#x56DE; 302</li>
+<li>redirect4&#xFF1A;&#x8FD4;&#x56DE; 301</li>
+</ul>
+<h2 id="rewrite-&#x884C;&#x4E3A;&#x8BB0;&#x5F55;&#x65E5;&#x5FD7;"><strong>rewrite</strong> &#x884C;&#x4E3A;&#x8BB0;&#x5F55;&#x65E5;&#x5FD7;</h2>
+<p>&#x4E3B;&#x8981;&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x4EE4; rewrite_log&#xFF1A;</p>
+<pre><code>Syntax: rewrite_log on | off;
+Default: rewrite_log off; 
+Context: http, server, location, if
+</code></pre><p>&#x8FD9;&#x4E2A;&#x6307;&#x4EE4;&#x6253;&#x5F00;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x628A; rewrite &#x7684;&#x65E5;&#x5FD7;&#x5199;&#x5165; logs/rewrite_error.log &#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x8FD9;&#x662F;&#x8BF7;&#x6C42; /first/3.txt &#x7684;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#xFF1A;</p>
+<pre><code>2020/05/06 06:24:05 [notice] 86959#0: *25 &quot;/first(.*)&quot; matches &quot;/first/3.txt&quot;, client: 127.0.0.1, server: rewrite.ziyang.com, request: &quot;GET /first/3.txt HTTP/1.1&quot;, host: &quot;rewrite.ziyang.com&quot;
+2020/05/06 06:24:05 [notice] 86959#0: *25 rewritten data: &quot;/second/3.txt&quot;, args: &quot;&quot;, client: 127.0.0.1, server: rewrite.ziyang.com, request: &quot;GET /first/3.txt HTTP/1.1&quot;, host: &quot;rewrite.ziyang.com&quot;
+2020/05/06 06:24:05 [notice] 86959#0: *25 &quot;/second(.*)&quot; matches &quot;/second/3.txt&quot;, client: 127.0.0.1, server: rewrite.ziyang.com, request: &quot;GET /first/3.txt HTTP/1.1&quot;, host: &quot;rewrite.ziyang.com&quot;
+2020/05/06 06:24:05 [notice] 86959#0: *25 rewritten data: &quot;/third/3.txt&quot;, args: &quot;&quot;, client: 127.0.0.1, server: rewrite.ziyang.com, request: &quot;GET /first/3.txt HTTP/1.1&quot;, host: &quot;rewrite.ziyang.com&quot;
+</code></pre><h2 id="if-&#x6307;&#x4EE4;">if &#x6307;&#x4EE4;</h2>
+<p>if &#x6307;&#x4EE4;&#x4E5F;&#x662F;&#x5728; rewrite &#x9636;&#x6BB5;&#x751F;&#x6548;&#x7684;&#xFF0C;&#x5B83;&#x7684;&#x8BED;&#x6CD5;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>Syntax: if (condition) { ... }
+Default: &#x2014;
+Context: server, location
+</code></pre><p>&#x5B83;&#x7684;&#x89C4;&#x5219;&#x662F;&#xFF1A;</p>
+<ul>
+<li>&#x6761;&#x4EF6; condition &#x4E3A;&#x771F;&#xFF0C;&#x5219;&#x6267;&#x884C;&#x5927;&#x62EC;&#x53F7;&#x5185;&#x7684;&#x6307;&#x4EE4;&#xFF1B;&#x540C;&#x65F6;&#x8FD8;&#x9075;&#x5FAA;&#x503C;&#x6307;&#x4EE4;&#x7684;&#x7EE7;&#x627F;&#x89C4;&#x5219;&#xFF08;&#x8BE6;&#x89C1;&#x6211;&#x4E4B;&#x524D;&#x7684;&#x6587;&#x7AE0; Nginx &#x7684;&#x914D;&#x7F6E;&#x6307;&#x4EE4;&#xFF09;</li>
+</ul>
+<p>&#x90A3;&#x4E48; if &#x6307;&#x4EE4;&#x7684;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x5305;&#x542B;&#x54EA;&#x4E9B;&#x5185;&#x5BB9;&#x5462;&#xFF1F;&#x5B83;&#x7684;&#x89C4;&#x5219;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li>&#x68C0;&#x67E5;&#x53D8;&#x91CF;&#x4E3A;&#x7A7A;&#x6216;&#x8005;&#x503C;&#x662F;&#x5426;&#x4E3A; 0</li>
+<li>&#x5C06;&#x53D8;&#x91CF;&#x4E0E;&#x5B57;&#x7B26;&#x4E32;&#x505A;&#x5339;&#x914D;&#xFF0C;&#x4F7F;&#x7528; = &#x6216; !=</li>
+<li>&#x5C06;&#x53D8;&#x91CF;&#x4E0E;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x505A;&#x5339;&#x914D;&#x5927;&#x5C0F;&#x5199;&#x654F;&#x611F;&#xFF0C;~ &#x6216;&#x8005; !~&#x5927;&#x5C0F;&#x5199;&#x4E0D;&#x654F;&#x611F;&#xFF0C;~* &#x6216;&#x8005; !~*</li>
+<li>&#x68C0;&#x67E5;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x4F7F;&#x7528; -f &#x6216;&#x8005; !-f</li>
+<li>&#x68C0;&#x67E5;&#x76EE;&#x5F55;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x4F7F;&#x7528; -d &#x6216;&#x8005; !-d</li>
+<li>&#x68C0;&#x67E5;&#x6587;&#x4EF6;&#x3001;&#x76EE;&#x5F55;&#x3001;&#x8F6F;&#x94FE;&#x63A5;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x4F7F;&#x7528; -e &#x6216;&#x8005; !-e</li>
+<li>&#x68C0;&#x67E5;&#x662F;&#x5426;&#x4E3A;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x4F7F;&#x7528; -x &#x6216;&#x8005; !-x</li>
+</ol>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E9B;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code>if ($http_user_agent ~ MSIE) { # &#x4E0E;&#x53D8;&#x91CF; http_user_agent &#x5339;&#x914D;
+    rewrite ^(.*)$ /msie/$1 break; 
+} 
+if ($http_cookie ~* &quot;id=([^;]+)(?:;|$)&quot;) { # &#x4E0E;&#x53D8;&#x91CF; http_cookie &#x5339;&#x914D;
+    set $id $1; 
+} 
+if ($request_method = POST) { # &#x4E0E;&#x53D8;&#x91CF; request_method &#x5339;&#x914D;&#xFF0C;&#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;
+    return 405; 
+} 
+if ($slow) { # slow &#x53D8;&#x91CF;&#x5728; map &#x6A21;&#x5757;&#x4E2D;&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5339;&#x914D;
+    limit_rate 10k; 
+} 
+if ($invalid_referer) { 
+    return 403; 
+}
+</code></pre><h2 id="findconfig-&#x9636;&#x6BB5;">find_config &#x9636;&#x6BB5;</h2>
+<p>&#x5F53;&#x7ECF;&#x8FC7; rewrite &#x6A21;&#x5757;&#xFF0C;&#x5339;&#x914D;&#x5230; URL &#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x8FDB;&#x5165; find_config &#x9636;&#x6BB5;&#xFF0C;&#x5F00;&#x59CB;&#x5BFB;&#x627E; URL &#x5BF9;&#x5E94;&#x7684; location &#x914D;&#x7F6E;&#x3002;</p>
+<h2 id="location-&#x6307;&#x4EE4;">location &#x6307;&#x4EE4;</h2>
+<h3 id="&#x6307;&#x4EE4;&#x8BED;&#x6CD5;">&#x6307;&#x4EE4;&#x8BED;&#x6CD5;</h3>
+<p>&#x8FD8;&#x662F;&#x8001;&#x89C4;&#x77E9;&#xFF0C;&#x54B1;&#x4EEC;&#x5148;&#x6765;&#x770B;&#x4E00;&#x4E0B; location &#x6307;&#x4EE4;&#x7684;&#x8BED;&#x6CD5;&#xFF1A;</p>
+<pre><code>Syntax: location [ = | ~ | ~* | ^~ ] uri { ... }
+        location @name { ... }
+Default: &#x2014;
+Context: server, location
+
+Syntax: merge_slashes on | off;
+Default: merge_slashes on; 
+Context: http, server
+</code></pre><p>&#x8FD9;&#x91CC;&#x9762;&#x6709;&#x4E00;&#x4E2A; merge_slashes &#x6307;&#x4EE4;&#xFF0C;&#x8FD9;&#x4E2A;&#x6307;&#x4EE4;&#x7684;&#x4F5C;&#x7528;&#x662F;&#xFF0C;&#x52A0;&#x5165; URL &#x4E2D;&#x6709;&#x4E24;&#x4E2A;&#x91CD;&#x590D;&#x7684; /&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x5408;&#x5E76;&#x4E3A;&#x4E00;&#x4E2A;&#xFF0C;&#x8FD9;&#x4E2A;&#x6307;&#x4EE4;&#x9ED8;&#x8BA4;&#x662F;&#x6253;&#x5F00;&#x7684;&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x5BF9; URL &#x8FDB;&#x884C; base64 &#x4E4B;&#x7C7B;&#x7684;&#x7F16;&#x7801;&#x65F6;&#x624D;&#x9700;&#x8981;&#x5173;&#x95ED;&#x3002;</p>
+<h3 id="&#x5339;&#x914D;&#x89C4;&#x5219;">&#x5339;&#x914D;&#x89C4;&#x5219;</h3>
+<p>location &#x7684;&#x5339;&#x914D;&#x89C4;&#x5219;&#x662F;&#x4EC5;&#x5339;&#x914D; URI&#xFF0C;&#x5FFD;&#x7565;&#x53C2;&#x6570;&#xFF0C;&#x6709;&#x4E0B;&#x9762;&#x4E09;&#x79CD;&#x5927;&#x7684;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ul>
+<li>&#x524D;&#x7F00;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x89C4;&#x5339;&#x914D;=&#xFF1A;&#x7CBE;&#x786E;&#x5339;&#x914D;^~&#xFF1A;&#x5339;&#x914D;&#x4E0A;&#x540E;&#x5219;&#x4E0D;&#x518D;&#x8FDB;&#x884C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5339;&#x914D;</li>
+<li>&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;~&#xFF1A;&#x5927;&#x5C0F;&#x5199;&#x654F;&#x611F;&#x7684;&#x6B63;&#x5219;&#x5339;&#x914D;~*&#xFF1A;&#x5927;&#x5C0F;&#x5199;&#x4E0D;&#x654F;&#x611F;</li>
+<li>&#x7528;&#x6237;&#x5185;&#x90E8;&#x8DF3;&#x8F6C;&#x7684;&#x547D;&#x540D; location@</li>
+</ul>
+<p>&#x5BF9;&#x4E8E;&#x8FD9;&#x4E9B;&#x89C4;&#x5219;&#x521A;&#x770B;&#x4E0A;&#x53BB;&#x80AF;&#x5B9A;&#x662F;&#x5F88;&#x61F5;&#x7684;&#xFF0C;&#x5B8C;&#x5168;&#x4E0D;&#x77E5;&#x9053;&#x5728;&#x8BF4;&#x4EC0;&#x4E48;&#xFF0C;&#x4E0B;&#x9762;&#x6765;&#x5B9E;&#x6218;&#x770B;&#x51E0;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;</p>
+<h3 id="&#x5B9E;&#x6218;">&#x5B9E;&#x6218;</h3>
+<p>&#x5148;&#x770B;&#x4E00;&#x4E0B; Nginx &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code>server {
+    listen 80;
+    server_name location.ziyang.com;
+    error_log  logs/error.log  debug;
+    #root html/;
+    default_type text/plain;
+    merge_slashes off;
+
+    location ~ /Test1/$ {
+        return 200 &apos;first regular expressions match!\n&apos;;
+    }
+    location ~* /Test1/(\w+)$ {
+        return 200 &apos;longest regular expressions match!\n&apos;;
+    }
+    location ^~ /Test1/ {
+        return 200 &apos;stop regular expressions match!\n&apos;;
+    }
+    location /Test1/Test2 {
+        return 200 &apos;longest prefix string match!\n&apos;;
+    }
+    location /Test1 {
+        return 200 &apos;prefix string match!\n&apos;;
+    }
+    location = /Test1 {
+        return 200 &apos;exact match!\n&apos;;
+    }
+}
+</code></pre><p>&#x95EE;&#x9898;&#x5C31;&#x6765;&#x4E86;&#xFF0C;&#x8BBF;&#x95EE;&#x4E0B;&#x9762;&#x51E0;&#x4E2A; URL &#x4F1A;&#x5206;&#x522B;&#x8FD4;&#x56DE;&#x4EC0;&#x4E48;&#x5185;&#x5BB9;&#x5462;&#xFF1F;</p>
+<pre><code>/Test1
+/Test1/
+/Test1/Test2
+/Test1/Test2/
+/test1/Test2
+</code></pre><p>&#x4F8B;&#x5982;&#x8BBF;&#x95EE; /Test1 &#x65F6;&#xFF0C;&#x4F1A;&#x6709;&#x51E0;&#x4E2A;&#x90E8;&#x5206;&#x90FD;&#x5339;&#x914D;&#x4E0A;&#xFF1A;</p>
+<ol>
+<li>&#x5E38;&#x89C4;&#x524D;&#x7F00;&#x5339;&#x914D;&#xFF1A;location /Test1</li>
+<li>&#x7CBE;&#x786E;&#x5339;&#x914D;&#xFF1A;location = /Test1</li>
+</ol>
+<p>&#x8BBF;&#x95EE; /Test1/ &#x65F6;&#xFF0C;&#x4E5F;&#x4F1A;&#x6709;&#x51E0;&#x4E2A;&#x90E8;&#x5206;&#x5339;&#x914D;&#x4E0A;&#xFF1A;</p>
+<ol>
+<li>location ~ /Test1/$</li>
+<li>location ^~ /Test1/</li>
+</ol>
+<p>&#x90A3;&#x4E48;&#x7A76;&#x7ADF;&#x4F1A;&#x5339;&#x914D;&#x54EA;&#x4E00;&#x4E2A;&#x5462;&#xFF1F;Nginx &#x5176;&#x5B9E;&#x662F;&#x9075;&#x5FAA;&#x4E00;&#x5957;&#x89C4;&#x5219;&#x7684;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/e48e4d6e956543c69dc330e50f9ca7ba~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=N8JMyMA%2Bp97b7TTg5lwJt8wi7N8%3D" alt=""></p>
+<p>&#x5168;&#x90E8;&#x7684;&#x524D;&#x7F00;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x653E;&#x7F6E;&#x5728;&#x4E00;&#x68F5;&#x4E8C;&#x53C9;&#x6811;&#x4E2D;&#x7684;&#xFF0C;Nginx &#x4F1A;&#x5206;&#x4E3A;&#x4E24;&#x90E8;&#x5206;&#x8FDB;&#x884C;&#x5339;&#x914D;&#xFF1A;</p>
+<ol>
+<li>&#x5148;&#x904D;&#x5386;&#x6240;&#x6709;&#x7684;&#x524D;&#x7F00;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x9009;&#x53D6;&#x6700;&#x957F;&#x7684;&#x4E00;&#x4E2A;&#x524D;&#x7F00;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x662F; = &#x7684;&#x7CBE;&#x786E;&#x5339;&#x914D;&#x6216; ^~ &#x7684;&#x524D;&#x7F00;&#x5339;&#x914D;&#xFF0C;&#x4F1A;&#x76F4;&#x63A5;&#x4F7F;&#x7528;</li>
+<li>&#x5982;&#x679C;&#x7B2C;&#x4E00;&#x6B65;&#x4E2D;&#x6CA1;&#x6709;&#x5339;&#x914D;&#x4E0A; = &#x6216; ^~&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x5148;&#x8BB0;&#x4F4F;&#x6700;&#x957F;&#x5339;&#x914D;&#x7684;&#x524D;&#x7F00;&#x5B57;&#x7B26;&#x4E32; location</li>
+<li>&#x6309;&#x7167; nginx.conf &#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x914D;&#x7F6E;&#x4F9D;&#x6B21;&#x5339;&#x914D;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;</li>
+<li>&#x5982;&#x679C;&#x6240;&#x6709;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x90FD;&#x6CA1;&#x6709;&#x5339;&#x914D;&#x4E0A;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x4F7F;&#x7528;&#x6700;&#x957F;&#x5339;&#x914D;&#x7684;&#x524D;&#x7F00;&#x5B57;&#x7B26;&#x4E32;</li>
+</ol>
+<p>&#x4E0B;&#x9762;&#x770B;&#x4E0B;&#x5B9E;&#x9645;&#x7684;&#x54CD;&#x5E94;&#x662F;&#x600E;&#x4E48;&#x6837;&#x7684;&#xFF1A;</p>
+<pre><code>&#x279C;  test_nginx curl location.ziyang.com/Test1
+exact match!
+&#x279C;  test_nginx curl location.ziyang.com/Test1/
+stop regular expressions match!
+&#x279C;  test_nginx curl location.ziyang.com/Test1/Test2
+longest regular expressions match!
+&#x279C;  test_nginx curl location.ziyang.com/Test1/Test2/
+longest prefix string match!
+&#x279C;  test_nginx curl location.ziyang.com/Test1/Test3
+stop regular expressions match!
+</code></pre><ul>
+<li>/Test1 &#x5339;&#x914D; location = /Test1</li>
+<li>/Test1/ &#x5339;&#x914D; location ^~ /Test1/</li>
+<li>/Test1/Test2 &#x5339;&#x914D; location ~* /Test1/(\w+)$</li>
+<li>/Test1/Test2/ &#x5339;&#x914D; location /Test1/Test2</li>
+<li>/Test1/Test3 &#x5339;&#x914D; location ^~ /Test1/</li>
+</ul>
+<p>&#x8FD9;&#x91CC;&#x9762;&#x91CD;&#x70B9;&#x89E3;&#x91CA;&#x4E00;&#x4E0B; /Test1/Test3 &#x7684;&#x5339;&#x914D;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<ol>
+<li>&#x904D;&#x5386;&#x6240;&#x6709;&#x53EF;&#x4EE5;&#x5339;&#x914D;&#x4E0A;&#x7684;&#x524D;&#x7F00;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x603B;&#x5171;&#x6709;&#x4E24;&#x4E2A;^~ /Test1//Test1</li>
+<li>&#x9009;&#x53D6;&#x6700;&#x957F;&#x7684;&#x524D;&#x7F00;&#x5B57;&#x7B26;&#x4E32; /Test1/&#xFF0C;&#x7531;&#x4E8E;&#x524D;&#x9762;&#x6709; ^~ &#x7981;&#x6B62;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5339;&#x914D;&#xFF0C;&#x56E0;&#x6B64;&#x76F4;&#x63A5;&#x4F7F;&#x7528; location ^~ /Test1/ &#x7684;&#x89C4;&#x5219;</li>
+<li>&#x8FD4;&#x56DE; stop regular expressions match!</li>
+</ol>
+<h2 id="preaccess-&#x9636;&#x6BB5;">preaccess &#x9636;&#x6BB5;</h2>
+<p>&#x4E0B;&#x9762;&#x5C31;&#x6765;&#x5230;&#x4E86; preaccess &#x9636;&#x6BB5;&#x3002;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x4F1A;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x662F;&#x5982;&#x4F55;&#x9650;&#x5236;&#x6BCF;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x6570;&#xFF1F;&#x5982;&#x4F55;&#x9650;&#x5236;&#x8BBF;&#x95EE;&#x9891;&#x7387;&#xFF1F;&#x8FD9;&#x4E9B;&#x5C31;&#x662F;&#x5728; preaccess &#x9636;&#x6BB5;&#x5904;&#x7406;&#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;preaccess &#x5C31;&#x662F;&#x5728;&#x8FDE;&#x63A5;&#x4E4B;&#x524D;&#x3002;&#x5148;&#x6765;&#x770B;&#x4E0B; limit_conn &#x6A21;&#x5757;&#x3002;</p>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/2ddce6a1e9c1411887e0000b6aea9f1f~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=KfylVeUG%2BsrsMU%2FRLpS06Q8jIJo%3D" alt=""></p>
+<h2 id="limitconn-&#x6A21;&#x5757;">limit_conn &#x6A21;&#x5757;</h2>
+<p>&#x8FD9;&#x91CC;&#x9762;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x6A21;&#x5757;&#x662F; ngx_http_limit_conn_module&#xFF0C;&#x5B83;&#x7684;&#x57FA;&#x672C;&#x7279;&#x6027;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x751F;&#x6548;&#x9636;&#x6BB5;&#xFF1A;NGX_HTTP_PREACCESS_PHASE &#x9636;&#x6BB5;</li>
+<li>&#x6A21;&#x5757;&#xFF1A;http_limit_conn_module</li>
+<li>&#x9ED8;&#x8BA4;&#x7F16;&#x8BD1;&#x8FDB; Nginx&#xFF0C;&#x901A;&#x8FC7; --without-http_limit_conn_module &#x7981;&#x7528;</li>
+<li>&#x751F;&#x6548;&#x8303;&#x56F4;&#x5168;&#x90E8; worker &#x8FDB;&#x7A0B;&#xFF08;&#x57FA;&#x4E8E;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF09;&#x8FDB;&#x5165; preaccess &#x9636;&#x6BB5;&#x524D;&#x4E0D;&#x751F;&#x6548;&#x9650;&#x5236;&#x7684;&#x6709;&#x6548;&#x6027;&#x53D6;&#x51B3;&#x4E8E; key &#x7684;&#x8BBE;&#x8BA1;&#xFF1A;&#x4F9D;&#x8D56; postread &#x9636;&#x6BB5;&#x7684; realip &#x6A21;&#x5757;&#x53D6;&#x5230;&#x771F;&#x5B9E; IP</li>
+</ul>
+<p>&#x8FD9;&#x91CC;&#x9762;&#x6709;&#x4E00;&#x70B9;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x5C31;&#x662F; limit_conn key &#x7684;&#x8BBE;&#x8BA1;&#xFF0C;&#x6240;&#x8C13;&#x7684; key &#x6307;&#x7684;&#x5C31;&#x662F;&#x5BF9;&#x54EA;&#x4E2A;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x9650;&#x5236;&#xFF0C;&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x53D6;&#x7684;&#x90FD;&#x662F;&#x7528;&#x6237;&#x7684;&#x771F;&#x5B9E; IP&#x3002;</p>
+<p>&#x8BF4;&#x5B8C;&#x4E86; limit_conn &#x7684;&#x6A21;&#x5757;&#xFF0C;&#x518D;&#x6765;&#x8BF4;&#x4E00;&#x4E0B;&#x6307;&#x4EE4;&#x8BED;&#x6CD5;&#x3002;</p>
+<h3 id="&#x6307;&#x4EE4;&#x8BED;&#x6CD5;">&#x6307;&#x4EE4;&#x8BED;&#x6CD5;</h3>
+<ul>
+<li>&#x5B9A;&#x4E49;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF08;&#x5305;&#x62EC;&#x5927;&#x5C0F;&#xFF09;&#xFF0C;&#x4EE5;&#x53CA; key &#x5173;&#x952E;&#x5B57;</li>
+</ul>
+<pre><code>Syntax: limit_conn_zone key zone=name:size;
+Default: &#x2014;
+Context: http
+</code></pre><ul>
+<li>&#x9650;&#x5236;&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x6570;</li>
+</ul>
+<pre><code>Syntax: limit_conn zone number;
+Default: &#x2014;
+Context: http, server, location
+</code></pre><ul>
+<li>&#x9650;&#x5236;&#x53D1;&#x751F;&#x65F6;&#x7684;&#x65E5;&#x5FD7;&#x7EA7;&#x522B;</li>
+</ul>
+<pre><code>Syntax: limit_conn_log_level info | notice | warn | error;
+Default: limit_conn_log_level error; 
+Context: http, server, location
+</code></pre><ul>
+<li>&#x9650;&#x5236;&#x53D1;&#x751F;&#x65F6;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE;&#x7684;&#x9519;&#x8BEF;&#x7801;</li>
+</ul>
+<pre><code>Syntax: limit_conn_status code;
+Default: limit_conn_status 503; 
+Context: http, server, location
+</code></pre><h3 id="&#x5B9E;&#x6218;">&#x5B9E;&#x6218;</h3>
+<p>&#x4E0B;&#x9762;&#x53C8;&#x5230;&#x4E86;&#x5B9E;&#x6218;&#x7684;&#x73AF;&#x8282;&#x4E86;&#xFF0C;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x7684;&#x4F8B;&#x5B50;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x4EE5;&#x4E0A;&#x7684;&#x51E0;&#x4E2A;&#x6307;&#x4EE4;&#x662F;&#x600E;&#x4E48;&#x8D77;&#x4F5C;&#x7528;&#x7684;&#x3002;</p>
+<p>&#x8001;&#x89C4;&#x77E9;&#xFF0C;&#x5148;&#x4E0A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code>limit_conn_zone $binary_remote_addr zone=addr:10m;
+#limit_req_zone $binary_remote_addr zone=one:10m rate=2r/m;
+
+server {
+    listen 80;
+    server_name limit.ziyang.com;
+    root html/;
+    error_log logs/myerror.log info;
+    location /{
+        limit_conn_status 500;
+        limit_conn_log_level  warn;
+        limit_rate 50;
+        limit_conn addr 1;
+        #limit_req zone=one burst=3 nodelay;
+        #limit_req zone=one;
+    }
+}
+</code></pre><ul>
+<li>&#x5728;&#x672C;&#x5730;&#x7684; hosts &#x6587;&#x4EF6;&#x4E2D;&#x6DFB;&#x52A0; limit.ziyang.com &#x4E3A;&#x672C;&#x673A; IP</li>
+</ul>
+<p>&#x5728;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x505A;&#x4E86;&#x4E24;&#x6761;&#x9650;&#x5236;&#xFF0C;&#x4E00;&#x4E2A;&#x662F; limit_rate &#x9650;&#x5236;&#x4E3A; 50 &#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x6570; limit_conn &#x9650;&#x5236;&#x4E3A; 1&#x3002;</p>
+<pre><code>&#x279C;  test_nginx curl limit.ziyang.com
+</code></pre><p>&#x8FD9;&#x65F6;&#x5019;&#x8BBF;&#x95EE; limit.ziyang.com &#x8FD9;&#x4E2A;&#x7AD9;&#x70B9;&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;&#x901F;&#x5EA6;&#x975E;&#x5E38;&#x6162;&#xFF0C;&#x56E0;&#x4E3A;&#x6BCF;&#x79D2;&#x949F;&#x53EA;&#x6709; 50 &#x4E2A;&#x5B57;&#x8282;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x518D;&#x540C;&#x65F6;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;&#x7AD9;&#x70B9;&#x7684;&#x8BDD;&#xFF0C;&#x5219;&#x4F1A;&#x8FD4;&#x56DE; 500&#x3002;</p>
+<p>&#x6211;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x7EC8;&#x7AEF;&#x91CC;&#x9762;&#x540C;&#x65F6;&#x8BBF;&#x95EE;&#xFF1A;</p>
+<pre><code>&#x279C;  ~ curl limit.ziyang.com
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;500 Internal Server Error&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;500 Internal Server Error&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.17.8&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;Nginx &#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x4E86; 500&#x3002;</p>
+<h2 id="limitreq-&#x6A21;&#x5757;">limit_req &#x6A21;&#x5757;</h2>
+<p>&#x5728;&#x672C;&#x8282;&#x5F00;&#x5934;&#x6211;&#x4EEC;&#x5C31;&#x63D0;&#x51FA;&#x4E86;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<ul>
+<li>&#x5982;&#x4F55;&#x9650;&#x5236;&#x6BCF;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x6570;&#xFF1F;</li>
+<li>&#x5982;&#x4F55;&#x9650;&#x5236;&#x8BBF;&#x95EE;&#x9891;&#x7387;&#xFF1F;</li>
+</ul>
+<p>&#x7B2C;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x9650;&#x5236;&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x6570;&#x7684;&#x95EE;&#x9898;&#x5DF2;&#x7ECF;&#x89E3;&#x51B3;&#x4E86;&#xFF0C;&#x4E0B;&#x9762;&#x6765;&#x770B;&#x7B2C;&#x4E8C;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x9762;&#x751F;&#x6548;&#x7684;&#x6A21;&#x5757;&#x662F; ngx_http_limit_req_module&#xFF0C;&#x5B83;&#x7684;&#x57FA;&#x672C;&#x7279;&#x6027;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x751F;&#x6548;&#x9636;&#x6BB5;&#xFF1A;NGX_HTTP_PREACCESS_PHASE &#x9636;&#x6BB5;</li>
+<li>&#x6A21;&#x5757;&#xFF1A;http_limit_req_module</li>
+<li>&#x9ED8;&#x8BA4;&#x7F16;&#x8BD1;&#x8FDB; Nginx&#xFF0C;&#x901A;&#x8FC7; --without-http_limit_req_module &#x7981;&#x7528;</li>
+<li>&#x751F;&#x6548;&#x7B97;&#x6CD5;&#xFF1A;leaky bucket &#x7B97;&#x6CD5;</li>
+<li>&#x751F;&#x6548;&#x8303;&#x56F4;&#x5168;&#x90E8; worker &#x8FDB;&#x7A0B;&#xFF08;&#x57FA;&#x4E8E;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF09;&#x8FDB;&#x5165; preaccess &#x9636;&#x6BB5;&#x524D;&#x4E0D;&#x751F;&#x6548;</li>
+</ul>
+<h3 id="leaky-bucket-&#x7B97;&#x6CD5;">leaky bucket &#x7B97;&#x6CD5;</h3>
+<p>leaky bucket &#x53EB;&#x6F0F;&#x6876;&#x7B97;&#x6CD5;&#xFF0C;&#x5176;&#x4ED6;&#x7528;&#x6765;&#x9650;&#x5236;&#x8BF7;&#x6C42;&#x901F;&#x7387;&#x7684;&#x8FD8;&#x6709;&#x4EE4;&#x724C;&#x73AF;&#x7B97;&#x6CD5;&#x7B49;&#xFF0C;&#x8FD9;&#x91CC;&#x9762;&#x4E0D;&#x5C55;&#x5F00;&#x8BB2;&#x3002;</p>
+<p>&#x6F0F;&#x6876;&#x7B97;&#x6CD5;&#x7684;&#x539F;&#x7406;&#x662F;&#xFF0C;&#x5148;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6876;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x6240;&#x6709;&#x8FDB;&#x5165;&#x6876;&#x5185;&#x7684;&#x8BF7;&#x6C42;&#x90FD;&#x4F1A;&#x4EE5;&#x6052;&#x5B9A;&#x7684;&#x901F;&#x7387;&#x88AB;&#x5904;&#x7406;&#xFF0C;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x592A;&#x591A;&#x8D85;&#x51FA;&#x4E86;&#x6876;&#x7684;&#x5BB9;&#x91CF;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x3002;&#x7528;&#x4E00;&#x5F20;&#x56FE;&#x89E3;&#x91CA;&#x4E00;&#x4E0B;&#x3002;</p>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/3910e857305c4664968791d34123c5b1~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=eZoR7BkJ%2BuMixXYB2m1ab0SucG0%3D" alt=""></p>
+<p>&#x8FD9;&#x5F20;&#x56FE;&#x91CC;&#x9762;&#xFF0C;&#x6C34;&#x9F99;&#x5934;&#x5728;&#x4E0D;&#x505C;&#x5730;&#x6EF4;&#x6C34;&#xFF0C;&#x5C31;&#x50CF;&#x7528;&#x6237;&#x53D1;&#x6765;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x6C34;&#x6EF4;&#x90FD;&#x4F1A;&#x4EE5;&#x6052;&#x5B9A;&#x7684;&#x901F;&#x7387;&#x6D41;&#x51FA;&#x53BB;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x88AB;&#x5904;&#x7406;&#x3002;&#x6F0F;&#x6876;&#x7B97;&#x6CD5;&#x5BF9;&#x4E8E;&#x7A81;&#x53D1;&#x6D41;&#x91CF;&#x6709;&#x5F88;&#x597D;&#x7684;&#x9650;&#x5236;&#x4F5C;&#x7528;&#xFF0C;&#x4F1A;&#x5C06;&#x6240;&#x6709;&#x7684;&#x8BF7;&#x6C42;&#x5E73;&#x6ED1;&#x7684;&#x5904;&#x7406;&#x6389;&#x3002;</p>
+<h3 id="&#x6307;&#x4EE4;&#x8BED;&#x6CD5;">&#x6307;&#x4EE4;&#x8BED;&#x6CD5;</h3>
+<ul>
+<li>&#x5B9A;&#x4E49;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF08;&#x5305;&#x62EC;&#x5927;&#x5C0F;&#xFF09;&#xFF0C;&#x4EE5;&#x53CA; key &#x5173;&#x952E;&#x5B57;&#x548C;&#x9650;&#x5236;&#x901F;&#x7387;</li>
+</ul>
+<pre><code>Syntax: limit_req_zone key zone=name:size rate=rate ;
+Default: &#x2014;
+Context: http
+</code></pre><blockquote>
+<p>rate &#x5355;&#x4F4D;&#x4E3A; r/s &#x6216;&#x8005; r/m&#xFF08;&#x6BCF;&#x5206;&#x949F;&#x6216;&#x8005;&#x6BCF;&#x79D2;&#x5904;&#x7406;&#x591A;&#x5C11;&#x4E2A;&#x8BF7;&#x6C42;&#xFF09;</p>
+</blockquote>
+<ul>
+<li>&#x9650;&#x5236;&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x6570;</li>
+</ul>
+<pre><code>Syntax: limit_req zone=name [burst=number] [nodelay];
+Default: &#x2014;
+Context: http, server, location
+</code></pre><blockquote>
+<p>burst &#x9ED8;&#x8BA4;&#x4E3A; 0nodelay&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E86;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x5BF9;&#x4E8E;&#x6F0F;&#x6876;&#x4E2D;&#x7684;&#x8BF7;&#x6C42;&#x4E5F;&#x4F1A;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;</p>
+</blockquote>
+<ul>
+<li>&#x9650;&#x5236;&#x53D1;&#x751F;&#x65F6;&#x7684;&#x65E5;&#x5FD7;&#x7EA7;&#x522B;</li>
+</ul>
+<pre><code>Syntax: limit_req_log_level info | notice | warn | error;
+Default: limit_req_log_level error; 
+Context: http, server, location
+</code></pre><ul>
+<li>&#x9650;&#x5236;&#x53D1;&#x751F;&#x65F6;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE;&#x7684;&#x9519;&#x8BEF;&#x7801;</li>
+</ul>
+<pre><code>Syntax: limit_req_status code;
+Default: limit_req_status 503; 
+Context: http, server, location
+</code></pre><h3 id="&#x5B9E;&#x6218;">&#x5B9E;&#x6218;</h3>
+<p>&#x5728;&#x5B9E;&#x9645;&#x9A8C;&#x8BC1;&#x4E4B;&#x524D;&#x5462;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<ul>
+<li>limit_req &#x4E0E; limit_conn &#x914D;&#x7F6E;&#x540C;&#x65F6;&#x751F;&#x6548;&#x65F6;&#xFF0C;&#x54EA;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x9AD8;&#xFF1F;</li>
+<li>nodelay &#x6DFB;&#x52A0;&#x4E0E;&#x5426;&#xFF0C;&#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x540C;&#xFF1F;</li>
+</ul>
+<p>&#x6DFB;&#x52A0;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E0E;&#x4E0A;&#x4E00;&#x8282;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5176;&#x5B9E;&#x662F;&#x76F8;&#x540C;&#x7684;&#x53EA;&#x4E0D;&#x8FC7;&#x9700;&#x8981;&#x6CE8;&#x91CA;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<pre><code>limit_conn_zone $binary_remote_addr zone=addr:10m;
+limit_req_zone $binary_remote_addr zone=one:10m rate=2r/m;
+
+server {
+    listen 80;
+    server_name limit.ziyang.com;
+    root html/;
+    error_log logs/myerror.log info;
+
+    location /{
+        limit_conn_status 500;
+        limit_conn_log_level  warn;
+        #limit_rate 50;
+        #limit_conn addr 1;
+        #limit_req zone=one burst=3 nodelay;
+        limit_req zone=one;
+    }
+}
+</code></pre><p>&#x7ED3;&#x8BBA;&#xFF1A;&#x5728; limit_req zone=one &#x6307;&#x4EE4;&#x4E0B;&#xFF0C;&#x8D85;&#x51FA;&#x6BCF;&#x5206;&#x949F;&#x5904;&#x7406;&#x7684;&#x8BF7;&#x6C42;&#x6570;&#x540E;&#x5C31;&#x4F1A;&#x7ACB;&#x523B;&#x8FD4;&#x56DE; 503&#x3002;</p>
+<pre><code>&#x279C;  test_nginx curl limit.ziyang.com
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;503 Service Temporarily Unavailable&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;503 Service Temporarily Unavailable&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.17.8&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>&#x6539;&#x53D8;&#x4E00;&#x4E0B;&#x6CE8;&#x91CA;&#x7684;&#x6307;&#x4EE4;&#xFF1A;</p>
+<pre><code>limit_req zone=one burst=3;
+#limit_req zone=one;
+</code></pre><p>&#x5728;&#x6CA1;&#x6709;&#x6DFB;&#x52A0; burst &#x53C2;&#x6570;&#x65F6;&#xFF0C;&#x4F1A;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x52A0;&#x4E0A;&#x4E4B;&#x540E;&#xFF0C;&#x4E0D;&#x4F1A;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x662F;&#x7B49;&#x5F85;&#x8BF7;&#x6C42;&#x9650;&#x5236;&#x89E3;&#x9664;&#xFF0C;&#x76F4;&#x5230;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x65F6;&#x518D;&#x8FD4;&#x56DE;&#x3002;</p>
+<p>&#x518D;&#x6765;&#x770B;&#x4E00;&#x4E0B; nodelay &#x53C2;&#x6570;&#xFF1A;</p>
+<pre><code>limit_req zone=one burst=3 nodelay;
+</code></pre><p>&#x6DFB;&#x52A0;&#x4E86; nodelay &#x4E4B;&#x540E;&#xFF0C;&#x8BF7;&#x6C42;&#x5728;&#x6CA1;&#x6709;&#x8FBE;&#x5230; burst &#x9650;&#x5236;&#x4E4B;&#x524D;&#x90FD;&#x53EF;&#x4EE5;&#x7ACB;&#x523B;&#x88AB;&#x5904;&#x7406;&#x5E76;&#x8FD4;&#x56DE;&#xFF0C;&#x8D85;&#x51FA;&#x4E86; burst &#x9650;&#x5236;&#x4E4B;&#x540E;&#xFF0C;&#x624D;&#x4F1A;&#x8FD4;&#x56DE; 503&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x56DE;&#x7B54;&#x4E00;&#x4E0B;&#x521A;&#x5F00;&#x59CB;&#x63D0;&#x51FA;&#x7684;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<ul>
+<li>limit_req &#x4E0E; limit_conn &#x914D;&#x7F6E;&#x540C;&#x65F6;&#x751F;&#x6548;&#x65F6;&#xFF0C;&#x54EA;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x9AD8;&#xFF1F;limit_req &#x5728; limit_conn &#x5904;&#x7406;&#x4E4B;&#x524D;&#xFF0C;&#x56E0;&#x6B64;&#x662F; limit_req &#x4F1A;&#x751F;&#x6548;</li>
+<li>nodelay &#x6DFB;&#x52A0;&#x4E0E;&#x5426;&#xFF0C;&#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x540C;&#xFF1F;&#x4E0D;&#x6DFB;&#x52A0; nodelay&#xFF0C;&#x8BF7;&#x6C42;&#x4F1A;&#x7B49;&#x5F85;&#xFF0C;&#x76F4;&#x5230;&#x80FD;&#x591F;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#xFF1B;&#x6DFB;&#x52A0; nodelay&#xFF0C;&#x5728;&#x4E0D;&#x8D85;&#x51FA; burst &#x7684;&#x9650;&#x5236;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4F1A;&#x7ACB;&#x523B;&#x5904;&#x7406;&#x5E76;&#x8FD4;&#x56DE;&#xFF0C;&#x8D85;&#x51FA;&#x9650;&#x5236;&#x5219;&#x4F1A;&#x8FD4;&#x56DE; 503&#x3002;</li>
+</ul>
+<h2 id="access-&#x9636;&#x6BB5;">access &#x9636;&#x6BB5;</h2>
+<p>&#x7ECF;&#x8FC7; preaccess &#x9636;&#x6BB5;&#x5BF9;&#x7528;&#x6237;&#x7684;&#x9650;&#x6D41;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x5230;&#x4E86; access &#x9636;&#x6BB5;&#x3002;</p>
+<h2 id="access-&#x6A21;&#x5757;">access &#x6A21;&#x5757;</h2>
+<p>&#x8FD9;&#x91CC;&#x9762;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x6A21;&#x5757;&#x662F; ngx_http_access_module&#xFF0C;&#x5B83;&#x7684;&#x57FA;&#x672C;&#x7279;&#x6027;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x751F;&#x6548;&#x9636;&#x6BB5;&#xFF1A;NGX_HTTP_ACCESS_PHASE &#x9636;&#x6BB5;</li>
+<li>&#x6A21;&#x5757;&#xFF1A;http_access_module</li>
+<li>&#x9ED8;&#x8BA4;&#x7F16;&#x8BD1;&#x8FDB; Nginx&#xFF0C;&#x901A;&#x8FC7; --without-http_access_module &#x7981;&#x7528;</li>
+<li>&#x751F;&#x6548;&#x8303;&#x56F4;&#x8FDB;&#x5165; access &#x9636;&#x6BB5;&#x524D;&#x4E0D;&#x751F;&#x6548;</li>
+</ul>
+<h3 id="&#x6307;&#x4EE4;&#x8BED;&#x6CD5;">&#x6307;&#x4EE4;&#x8BED;&#x6CD5;</h3>
+<pre><code>Syntax: allow address | CIDR | unix: | all;
+Default: &#x2014;
+Context: http, server, location, limit_except
+
+Syntax: deny address | CIDR | unix: | all;
+Default: &#x2014;
+Context: http, server, location, limit_except
+</code></pre><p>access &#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x6761;&#x6307;&#x4EE4; allow &#x548C; deny&#xFF0C;&#x6765;&#x770B;&#x51E0;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code>location / { 
+    deny 192.168.1.1; 
+    allow 192.168.1.0/24; 
+    allow 10.1.1.0/16; 
+    allow 2001:0db8::/32; 
+    deny all; 
+}
+</code></pre><p>&#x5BF9;&#x4E8E;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x4E9B;&#x6307;&#x4EE4;&#x662F;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x5F53;&#x6EE1;&#x8DB3;&#x4E86;&#x4E00;&#x6761;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x518D;&#x5411;&#x4E0B;&#x6267;&#x884C;&#x3002;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x4E0D;&#x505A;&#x5B9E;&#x6218;&#x6F14;&#x7EC3;&#x4E86;&#x3002;</p>
+<h2 id="authbasic-&#x6A21;&#x5757;">auth_basic &#x6A21;&#x5757;</h2>
+<p>auth_basic &#x6A21;&#x5757;&#x662F;&#x7528;&#x4F5C;&#x7528;&#x6237;&#x8BA4;&#x8BC1;&#x7684;&#xFF0C;&#x5F53;&#x5F00;&#x542F;&#x4E86;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x6D4F;&#x89C8;&#x5668;&#x8BBF;&#x95EE;&#x7F51;&#x7AD9;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; 401 Unauthorized&#xFF0C;&#x5F53;&#x7136;&#x8FD9;&#x4E2A; 401 &#x7528;&#x6237;&#x4E0D;&#x4F1A;&#x770B;&#x89C1;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x5F39;&#x51FA;&#x4E00;&#x4E2A;&#x5BF9;&#x8BDD;&#x6846;&#x8981;&#x6C42;&#x8F93;&#x5165;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&#x3002;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x4F7F;&#x7528;&#x7684;&#x662F; RFC2617 &#x4E2D;&#x7684;&#x5B9A;&#x4E49;&#x3002;</p>
+<h3 id="&#x6307;&#x4EE4;&#x8BED;&#x6CD5;">&#x6307;&#x4EE4;&#x8BED;&#x6CD5;</h3>
+<ul>
+<li>&#x57FA;&#x4E8E; HTTP Basic Authutication &#x534F;&#x8BAE;&#x8FDB;&#x884C;&#x7528;&#x6237;&#x5BC6;&#x7801;&#x7684;&#x8BA4;&#x8BC1;</li>
+<li>&#x9ED8;&#x8BA4;&#x7F16;&#x8BD1;&#x8FDB; Nginx--without-http_auth_basic_moduledisable ngx_http_auth_basic_module</li>
+</ul>
+<pre><code>Syntax: auth_basic string | off;
+Default: auth_basic off; 
+Context: http, server, location, limit_except
+
+Syntax: auth_basic_user_file file;
+Default: &#x2014;
+Context: http, server, location, limit_except
+</code></pre><p>&#x8FD9;&#x91CC;&#x9762;&#x6211;&#x4EEC;&#x4F1A;&#x7528;&#x5230;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#x53EB; htpasswd&#xFF0C;&#x8FD9;&#x4E2A;&#x5DE5;&#x5177;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x751F;&#x6210;&#x5BC6;&#x7801;&#x6587;&#x4EF6;&#xFF0C;&#x800C; auth_basic_user_file &#x5C31;&#x4F9D;&#x8D56;&#x8FD9;&#x4E2A;&#x5BC6;&#x7801;&#x6587;&#x4EF6;&#x3002;</p>
+<blockquote>
+<p>htpasswd &#x4F9D;&#x8D56;&#x5B89;&#x88C5;&#x5305; httpd-tools</p>
+</blockquote>
+<p>&#x751F;&#x6210;&#x5BC6;&#x7801;&#x7684;&#x547D;&#x4EE4;&#x4E3A;&#xFF1A;</p>
+<pre><code>htpasswd &#x2013;c file &#x2013;b user pass
+</code></pre><p>&#x751F;&#x6210;&#x7684;&#x5BC6;&#x7801;&#x6587;&#x4EF6;&#x7684;&#x683C;&#x5F0F;&#x4E3A;&#xFF1A;</p>
+<pre><code># comment 
+name1:password1 
+name2:password2:comment 
+name3:password3
+</code></pre><h3 id="&#x5B9E;&#x6218;">&#x5B9E;&#x6218;</h3>
+<ul>
+<li>&#x5728; example &#x76EE;&#x5F55;&#x4E0B;&#x751F;&#x6210;&#x5BC6;&#x7801;&#x6587;&#x4EF6; auth.pass</li>
+</ul>
+<pre><code>htpasswd -bc auth.pass ziyang 123456
+</code></pre><ul>
+<li>&#x6DFB;&#x52A0;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</li>
+</ul>
+<pre><code>server {
+    server_name access.ziyang.com;
+    listen 80;
+    error_log  logs/error.log  debug;
+    default_type text/plain;
+    location /auth_basic {
+        satisfy any;
+        auth_basic &quot;test auth_basic&quot;;
+        auth_basic_user_file example/auth.pass;
+        deny all;
+    }
+}
+</code></pre><ul>
+<li>&#x91CD;&#x8F7D; Nginx &#x914D;&#x7F6E;&#x6587;&#x4EF6;</li>
+<li>&#x5728; /etc/hosts &#x6587;&#x4EF6;&#x4E2D;&#x6DFB;&#x52A0; access.ziyang.com</li>
+</ul>
+<p>&#x8FD9;&#x65F6;&#x5019;&#x8BBF;&#x95EE; access.ziyang.com &#x5C31;&#x4F1A;&#x5F39;&#x51FA;&#x5BF9;&#x8BDD;&#x6846;&#xFF0C;&#x63D0;&#x793A;&#x8F93;&#x5165;&#x5BC6;&#x7801;&#xFF1A;</p>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/b0e18e740f524c318d440ef87ab9d254~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=YY0eOr0D3QXmdT5DELhbG%2BaHnEo%3D" alt=""></p>
+<h2 id="authrequest-&#x6A21;&#x5757;">auth_request &#x6A21;&#x5757;</h2>
+<ul>
+<li>&#x529F;&#x80FD;&#xFF1A;&#x5411;&#x4E0A;&#x6E38;&#x7684;&#x670D;&#x52A1;&#x8F6C;&#x53D1;&#x8BF7;&#x6C42;&#xFF0C;&#x82E5;&#x4E0A;&#x6E38;&#x670D;&#x52A1;&#x8FD4;&#x56DE;&#x7684;&#x54CD;&#x5E94;&#x7801;&#x662F; 2xx&#xFF0C;&#x5219;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x82E5;&#x4E0A;&#x6E38;&#x670D;&#x52A1;&#x8FD4;&#x56DE;&#x7684;&#x54CD;&#x5E94;&#x7801;&#x662F; 2xx&#xFF0C;&#x5219;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x82E5;&#x4E0A;&#x6E38;&#x670D;&#x52A1;&#x8FD4;&#x56DE;&#x7684;&#x662F; 401 &#x6216;&#x8005; 403&#xFF0C;&#x5219;&#x5C06;&#x54CD;&#x5E94;&#x8FD4;&#x56DE;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;</li>
+<li>&#x539F;&#x7406;&#xFF1A;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x540E;&#xFF0C;&#x751F;&#x6210;&#x5B50;&#x8BF7;&#x6C42;&#xFF0C;&#x901A;&#x8FC7;&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x6280;&#x672F;&#x628A;&#x8BF7;&#x6C42;&#x4F20;&#x9012;&#x7ED9;&#x4E0A;&#x6E38;&#x670D;&#x52A1;</li>
+<li>&#x9ED8;&#x8BA4;&#x672A;&#x7F16;&#x8BD1;&#x8FDB; Nginx&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7; --with-http_auth_request_module &#x7F16;&#x8BD1;&#x8FDB;&#x53BB;</li>
+</ul>
+<h3 id="&#x6307;&#x4EE4;&#x8BED;&#x6CD5;">&#x6307;&#x4EE4;&#x8BED;&#x6CD5;</h3>
+<pre><code>Syntax: auth_request uri | off;
+Default: auth_request off; 
+Context: http, server, location
+
+Syntax: auth_request_set $variable value;
+Default: &#x2014;
+Context: http, server, location
+</code></pre><h3 id="&#x5B9E;&#x6218;">&#x5B9E;&#x6218;</h3>
+<ul>
+<li>&#x5728;&#x4E0A;&#x4E00;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x6DFB;&#x52A0;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;</li>
+</ul>
+<pre><code>server {
+    server_name access.ziyang.com;
+    listen 80;
+    error_log  logs/error.log  debug;
+    #root html/;
+    default_type text/plain;
+    location /auth_basic {
+        satisfy any;
+        auth_basic &quot;test auth_basic&quot;;
+        auth_basic_user_file example/auth.pass;
+        deny all;
+    }
+    location / {
+        auth_request /test_auth;
+    }
+    location = /test_auth {
+        proxy_pass http://127.0.0.1:8090/auth_upstream;
+        proxy_pass_request_body off;
+        proxy_set_header Content-Length &quot;&quot;;
+        proxy_set_header X-Original-URI $request_uri;
+    }
+}
+</code></pre><ul>
+<li>&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;/ &#x8DEF;&#x5F84;&#x4E0B;&#x4F1A;&#x5C06;&#x8BF7;&#x6C42;&#x8F6C;&#x53D1;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x4E2D;&#x53BB;&#xFF0C;&#x53EF;&#x4EE5;&#x7528; nginx &#x518D;&#x642D;&#x5EFA;&#x4E00;&#x4E2A;&#x670D;&#x52A1;</li>
+<li>&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x8FD4;&#x56DE; 2xx&#xFF0C;&#x90A3;&#x4E48;&#x9274;&#x6743;&#x6210;&#x529F;&#xFF0C;&#x5982;&#x679C;&#x8FD4;&#x56DE; 401 &#x6216; 403 &#x5219;&#x9274;&#x6743;&#x5931;&#x8D25;</li>
+</ul>
+<h2 id="&#x9650;&#x5236;&#x6240;&#x6709;-access-&#x9636;&#x6BB5;&#x6A21;&#x5757;&#x7684;-satisfy-&#x6307;&#x4EE4;">&#x9650;&#x5236;&#x6240;&#x6709; access &#x9636;&#x6BB5;&#x6A21;&#x5757;&#x7684; satisfy &#x6307;&#x4EE4;</h2>
+<h3 id="&#x6307;&#x4EE4;&#x8BED;&#x6CD5;">&#x6307;&#x4EE4;&#x8BED;&#x6CD5;</h3>
+<pre><code>Syntax: satisfy all | any;
+Default: satisfy all; 
+Context: http, server, location
+</code></pre><p>satisfy &#x6307;&#x4EE4;&#x6709;&#x4E24;&#x4E2A;&#x503C;&#x4E00;&#x4E2A;&#x662F; all&#xFF0C;&#x4E00;&#x4E2A;&#x662F; any&#xFF0C;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x5BF9; acces &#x9636;&#x6BB5;&#x7684;&#x4E09;&#x4E2A;&#x6A21;&#x5757;&#x90FD;&#x751F;&#x6548;&#xFF1A;</p>
+<ul>
+<li>access &#x6A21;&#x5757;</li>
+<li>auth_basic &#x6A21;&#x5757;</li>
+<li>auth_request &#x6A21;&#x5757;</li>
+<li>&#x5176;&#x4ED6;&#x6A21;&#x5757;</li>
+</ul>
+<p>&#x5982;&#x679C; satisfy &#x6307;&#x4EE4;&#x7684;&#x503C;&#x662F; all &#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x8868;&#x793A;&#x5FC5;&#x987B;&#x6240;&#x6709; access &#x9636;&#x6BB5;&#x7684;&#x6A21;&#x5757;&#x90FD;&#x8981;&#x6267;&#x884C;&#xFF0C;&#x90FD;&#x901A;&#x8FC7;&#x4E86;&#x624D;&#x4F1A;&#x653E;&#x884C;&#xFF1B;&#x503C;&#x662F; any &#x7684;&#x8BDD;&#xFF0C;&#x8868;&#x793A;&#x6709;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x5F97;&#x5230;&#x6267;&#x884C;&#x5373;&#x53EF;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x6709;&#x51E0;&#x4E2A;&#x95EE;&#x9898;&#x53EF;&#x4EE5;&#x52A0;&#x6DF1;&#x4E00;&#x4E0B;&#x7406;&#x89E3;&#xFF1A;</p>
+<ol>
+<li>&#x5982;&#x679C;&#x6709; return &#x6307;&#x4EE4;&#xFF0C;access &#x9636;&#x6BB5;&#x4F1A;&#x751F;&#x6548;&#x5417;&#xFF1F;return &#x6307;&#x4EE4;&#x5C5E;&#x4E8E; rewrite &#x9636;&#x6BB5;&#xFF0C;&#x5728; access &#x9636;&#x6BB5;&#x4E4B;&#x524D;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x4F1A;&#x751F;&#x6548;&#x3002;</li>
+<li>&#x591A;&#x4E2A; access &#x6A21;&#x5757;&#x7684;&#x987A;&#x5E8F;&#x6709;&#x5F71;&#x54CD;&#x5417;&#xFF1F;ngx_http_auth_request_module, ngx_http_auth_basic_module, ngx_http_access_module, &#x6709;&#x5F71;&#x54CD;</li>
+<li>&#x8F93;&#x5BF9;&#x5BC6;&#x7801;&#xFF0C;&#x4E0B;&#x9762;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5230;&#x6587;&#x4EF6;&#x5417;&#xFF1F;location /{ satisfy any; auth_basic &quot;test auth_basic&quot;; auth_basic_user_file examples/auth.pass; deny all; } &#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5230;&#xFF0C;&#x56E0;&#x4E3A; satisfy &#x7684;&#x503C;&#x662F; any&#xFF0C;&#x56E0;&#x6B64;&#x53EA;&#x8981;&#x6709;&#x6A21;&#x5757;&#x6EE1;&#x8DB3;&#xFF0C;&#x5373;&#x53EF;&#x653E;&#x884C;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x628A; deny all &#x63D0;&#x5230; auth_basic &#x4E4B;&#x524D;&#x5462;&#xFF1F;&#x4F9D;&#x7136;&#x53EF;&#x4EE5;&#xFF0C;&#x56E0;&#x4E3A;&#x5404;&#x4E2A;&#x6A21;&#x5757;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x548C;&#x6307;&#x4EE4;&#x7684;&#x987A;&#x5E8F;&#x65E0;&#x5173;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x6539;&#x4E3A; allow all&#xFF0C;&#x6709;&#x673A;&#x4F1A;&#x8F93;&#x5165;&#x5BC6;&#x7801;&#x5417;&#xFF1F;&#x6CA1;&#x6709;&#x673A;&#x4F1A;&#xFF0C;&#x56E0;&#x4E3A; allow all &#x662F; access &#x6A21;&#x5757;&#xFF0C;&#x5148;&#x4E8E; auth_basic &#x6A21;&#x5757;&#x6267;&#x884C;&#x3002;</li>
+</ol>
+<h2 id="precontent-&#x9636;&#x6BB5;">precontent &#x9636;&#x6BB5;</h2>
+<p>&#x8BB2;&#x5230;&#x4E86;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x6765;&#x56DE;&#x987E;&#x4E00;&#x4E0B; Nginx &#x5904;&#x7406; HTTP &#x8BF7;&#x6C42;&#x7684; 11 &#x4E2A;&#x9636;&#x6BB5;&#xFF1A;</p>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/9d96a1f602624a2fa94a9d7b7917cd15~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=dMfq0BSEJ5ZbmGopca4SJsmyxX4%3D" alt=""></p>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6765;&#x5230;&#x4E86; precontent &#x9636;&#x6BB5;&#xFF0C;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x53EA;&#x6709; try_files &#x8FD9;&#x4E00;&#x4E2A;&#x6307;&#x4EE4;&#x3002;</p>
+<h2 id="tryfiles-&#x6A21;&#x5757;">try_files &#x6A21;&#x5757;</h2>
+<h3 id="&#x6307;&#x4EE4;&#x8BED;&#x6CD5;">&#x6307;&#x4EE4;&#x8BED;&#x6CD5;</h3>
+<pre><code>Syntax: try_files file ... uri;
+        try_files file ... =code;
+Default: &#x2014;
+Context: server, location
+</code></pre><ul>
+<li>&#x6A21;&#x5757;&#xFF1A;ngx_http_try_files_module &#x6A21;&#x5757;</li>
+<li>&#x4F9D;&#x6B21;&#x8BD5;&#x56FE;&#x8BBF;&#x95EE;&#x591A;&#x4E2A; URL &#x5BF9;&#x5E94;&#x7684;&#x6587;&#x4EF6;&#xFF08;&#x7531; root &#x6216;&#x8005; alias &#x6307;&#x4EE4;&#x6307;&#x5B9A;&#xFF09;&#xFF0C;&#x5F53;&#x6587;&#x4EF6;&#x5B58;&#x5728;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x5982;&#x679C;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x90FD;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x6309;&#x7167;&#x6700;&#x540E;&#x4E00;&#x4E2A; URL &#x7ED3;&#x679C;&#x6216;&#x8005; code &#x8FD4;&#x56DE;</li>
+</ul>
+<h3 id="&#x5B9E;&#x6218;">&#x5B9E;&#x6218;</h3>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5B9E;&#x9645;&#x770B;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code>server {
+    server_name tryfiles.ziyang.com;
+    listen 80;
+    error_log  logs/myerror.log  info;
+    root html/;
+    default_type text/plain;
+    location /first {
+        try_files /system/maintenance.html
+            $uri $uri/index.html $uri.html
+            @lasturl;
+    }
+    location @lasturl {
+        return 200 &apos;lasturl!\n&apos;;
+    }
+    location /second {
+        try_files $uri $uri/index.html $uri.html =404;
+    }
+}
+</code></pre><p>&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x8BBF;&#x95EE; /first &#x5B9E;&#x9645;&#x4E0A;&#x5230;&#x4E86; lasturl&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE; 200</li>
+<li>&#x8BBF;&#x95EE; /second &#x5219;&#x8FD4;&#x56DE;&#x4E86; 404</li>
+</ul>
+<p>&#x8FD9;&#x4E24;&#x4E2A;&#x7ED3;&#x679C;&#x90FD;&#x4E0E;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x662F;&#x4E00;&#x81F4;&#x7684;&#x3002;</p>
+<pre><code>&#x279C;  test_nginx curl tryfiles.ziyang.com/second
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.17.8&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&#x279C;  test_nginx curl tryfiles.ziyang.com/first 
+lasturl!
+</code></pre><h2 id="mirror-&#x6A21;&#x5757;">mirror &#x6A21;&#x5757;</h2>
+<p>mirror &#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x5B9E;&#x65F6;&#x62F7;&#x8D1D;&#x6D41;&#x91CF;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x540C;&#x65F6;&#x8BBF;&#x95EE;&#x591A;&#x4E2A;&#x73AF;&#x5883;&#x7684;&#x8BF7;&#x6C42;&#x662F;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#x3002;</p>
+<h3 id="&#x6307;&#x4EE4;&#x8BED;&#x6CD5;">&#x6307;&#x4EE4;&#x8BED;&#x6CD5;</h3>
+<ul>
+<li>&#x6A21;&#x5757;&#xFF1A;ngx_http_mirror_module &#x6A21;&#x5757;&#xFF0C;&#x9ED8;&#x8BA4;&#x7F16;&#x8BD1;&#x8FDB; Nginx&#x901A;&#x8FC7; --without-http_mirror_module &#x79FB;&#x9664;&#x6A21;&#x5757;</li>
+<li>&#x529F;&#x80FD;&#xFF1A;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x751F;&#x6210;&#x5B50;&#x8BF7;&#x6C42;&#x8BBF;&#x95EE;&#x5176;&#x4ED6;&#x670D;&#x52A1;&#xFF0C;&#x5BF9;&#x5B50;&#x8BF7;&#x6C42;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x4E0D;&#x505A;&#x5904;&#x7406;</li>
+</ul>
+<pre><code>Syntax: mirror uri | off;
+Default: mirror off; 
+Context: http, server, location
+
+Syntax: mirror_request_body on | off;
+Default: mirror_request_body on; 
+Context: http, server, location
+</code></pre><h3 id="&#x5B9E;&#x6218;">&#x5B9E;&#x6218;</h3>
+<ul>
+<li>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF0C;&#x9700;&#x8981;&#x518D;&#x5F00;&#x542F;&#x53E6;&#x5916;&#x4E00;&#x4E2A; Nginx &#x6765;&#x63A5;&#x6536;&#x8BF7;&#x6C42;</li>
+</ul>
+<pre><code>server {
+    server_name mirror.ziyang.com;
+    listen 8001;
+    error_log logs/error_log debug;
+    location / {
+        mirror /mirror;
+        mirror_request_body off;
+    }
+    location = /mirror {
+        internal;
+        proxy_pass http://127.0.0.1:10020$request_uri;
+        proxy_pass_request_body off;
+        proxy_set_header Content-Length &quot;&quot;;
+        proxy_set_header X-Original-URI $request_uri;
+    }
+}
+</code></pre><ul>
+<li>&#x5728; access.log &#x6587;&#x4EF6;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6709;&#x8BF7;&#x6C42;&#x8BB0;&#x5F55;&#x65E5;&#x5FD7;</li>
+</ul>
+<h2 id="content-&#x9636;&#x6BB5;">content &#x9636;&#x6BB5;</h2>
+<p>&#x4E0B;&#x9762;&#x5F00;&#x59CB;&#x5C31;&#x5230;&#x4E86; content &#x9636;&#x6BB5;&#xFF0C;&#x5148;&#x6765;&#x770B; content &#x9636;&#x6BB5;&#x7684; static &#x6A21;&#x5757;&#xFF0C;&#x867D;&#x7136;&#x8FD9;&#x662F;&#x4F4D;&#x4E8E; content &#x9636;&#x6BB5;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x6A21;&#x5757;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x91CC;&#x5148;&#x6765;&#x4ECB;&#x7ECD;&#x5B83;&#x3002;</p>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/8d334a373d4a49289741ce45d2bdd8d2~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=bUa9ZwSDWlq4Hn9KI2KEHwwQNZk%3D" alt=""></p>
+<h2 id="static-&#x6A21;&#x5757;">static &#x6A21;&#x5757;</h2>
+<h3 id="root-&#x548C;-alias-&#x6307;&#x4EE4;">root &#x548C; alias &#x6307;&#x4EE4;</h3>
+<p>&#x5148;&#x6765;&#x4E00;&#x4E0B; root &#x548C; alias &#x8FD9;&#x4E24;&#x4E2A;&#x6307;&#x4EE4;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x6307;&#x4EE4;&#x90FD;&#x662F;&#x7528;&#x6765;&#x6620;&#x5C04;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x7684;&#x3002;</p>
+<pre><code>Syntax: alias path;
+Default: &#x2014;
+Context: location
+</code></pre><pre><code>Syntax: root path;
+Default: root html; 
+Context: http, server, location, if in location
+</code></pre><ul>
+<li>&#x529F;&#x80FD;&#xFF1A;&#x5C06; URL &#x6620;&#x5C04;&#x4E3A;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF0C;&#x4EE5;&#x8FD4;&#x56DE;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x5185;&#x5BB9;</li>
+<li>&#x5DEE;&#x522B;&#xFF1A;root &#x4F1A;&#x5C06;&#x5B8C;&#x6574; URL &#x6620;&#x5C04;&#x8FDB;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x4E2D;&#xFF0C;alias &#x53EA;&#x4F1A;&#x5C06; location &#x540E;&#x7684; URL &#x6620;&#x5C04;&#x5230;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;</li>
+</ul>
+<h3 id="&#x5B9E;&#x6218;">&#x5B9E;&#x6218;</h3>
+<p>&#x4E0B;&#x9762;&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<p>&#x73B0;&#x5728;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF1A;</p>
+<pre><code>html/first/
+&#x2514;&#x2500;&#x2500; 1.txt
+</code></pre><p>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>server {
+    server_name static.ziyang.com;
+    listen 80;
+    error_log  logs/myerror.log  info;
+    location /root {
+        root html;
+    }
+    location /alias {
+        alias html;
+    }
+    location ~ /root/(\w+\.txt) {
+        root html/first/$1;
+    }
+    location ~ /alias/(\w+\.txt) {
+        alias html/first/$1;
+    }
+    location  /RealPath/ {
+        alias html/realpath/;
+        return 200 &apos;$request_filename:$document_root:$realpath_root\n&apos;;
+    }
+}
+</code></pre><p>&#x90A3;&#x4E48;&#x8BBF;&#x95EE;&#x4EE5;&#x4E0B; URL &#x4F1A;&#x5F97;&#x5230;&#x4EC0;&#x4E48;&#x54CD;&#x5E94;&#x5462;&#xFF1F;</p>
+<pre><code>/root
+/alias
+/root/1.txt
+/alias/1.txt
+</code></pre><pre><code>&#x279C;  test_nginx curl static.ziyang.com/alias/1.txt
+test1%
+&#x279C;  test_nginx curl static.ziyang.com/alias/     
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+...
+&#x279C;  test_nginx curl static.ziyang.com/root/      
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.17.8&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&#x279C;  test_nginx curl static.ziyang.com/root/1.txt
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.17.8&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>&#x8BBF;&#x95EE;&#x8FD9;&#x56DB;&#x4E2A;&#x8DEF;&#x5F84;&#x5206;&#x522B;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x662F;&#xFF1A;</p>
+<ul>
+<li>/root&#xFF1A;404</li>
+<li>/alias&#xFF1A;200</li>
+<li>/root/1.txt&#xFF1A;404</li>
+<li>/alias/1.txt&#xFF1A;200</li>
+</ul>
+<p>&#x8FD9;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x662F;&#x56E0;&#x4E3A;&#xFF0C;root &#x5728;&#x6620;&#x5C04; URL &#x65F6;&#xFF0C;&#x4F1A;&#x628A; location &#x4E2D;&#x7684;&#x8DEF;&#x5F84;&#x4E5F;&#x52A0;&#x8FDB;&#x53BB;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#xFF1A;</p>
+<ul>
+<li>static.ziyang.com/root/ &#x5B9E;&#x9645;&#x8BBF;&#x95EE;&#x7684;&#x662F; html/root/</li>
+<li>static.ziyang.com/root/1.txt &#x5B9E;&#x9645;&#x662F; html/first/1.txt/root/1.txt</li>
+<li>static.ziyang.com/alias/ &#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x6B63;&#x786E;&#x8BBF;&#x95EE;&#x5230;&#x4E86; html &#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x7531;&#x4E8E;&#x540E;&#x9762;&#x6709; / &#x7684;&#x5B58;&#x5728;&#xFF0C;&#x56E0;&#x6B64;&#x5B9E;&#x9645;&#x8BBF;&#x95EE;&#x7684;&#x662F; html/index.html</li>
+<li>static.ziyang.com/alias/1.txt &#x5B9E;&#x9645;&#x8BBF;&#x95EE;&#x7684;&#x662F; html/first/1.txt&#xFF0C;&#x6587;&#x4EF6;&#x5B58;&#x5728;</li>
+</ul>
+<h3 id="&#x4E09;&#x4E2A;&#x76F8;&#x5173;&#x53D8;&#x91CF;">&#x4E09;&#x4E2A;&#x76F8;&#x5173;&#x53D8;&#x91CF;</h3>
+<p>&#x8FD8;&#x662F;&#x4E0A;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code>location  /RealPath/ {
+    alias html/realpath/;
+    return 200 &apos;$request_filename:$document_root:$realpath_root\n&apos;;
+}
+</code></pre><p>&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5728;&#x8BBF;&#x95EE; /RealPath/1.txt &#x65F6;&#xFF0C;&#x8FD9;&#x4E09;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x5404;&#x4E3A;&#x591A;&#x5C11;&#xFF1F;</p>
+<p>&#x4E3A;&#x4E86;&#x89E3;&#x7B54;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x89E3;&#x91CA;&#x4E09;&#x4E2A;&#x53D8;&#x91CF;&#xFF1A;</p>
+<ul>
+<li>request_filename&#xFF1A;&#x5F85;&#x8BBF;&#x95EE;&#x6587;&#x4EF6;&#x7684;&#x5B8C;&#x6574;&#x8DEF;&#x5F84;</li>
+<li>document_root&#xFF1A;&#x7531; URI &#x548C; root/alias &#x6307;&#x4EE4;&#x751F;&#x6210;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x8DEF;&#x5F84;&#xFF08;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x8F6F;&#x94FE;&#x63A5;&#x7684;&#x8DEF;&#x5F84;&#xFF09;</li>
+<li>realpath_root&#xFF1A;&#x5C06; document_root &#x4E2D;&#x7684;&#x8F6F;&#x94FE;&#x63A5;&#x66FF;&#x6362;&#x6210;&#x771F;&#x5B9E;&#x8DEF;&#x5F84;</li>
+</ul>
+<p>&#x4E3A;&#x4E86;&#x9A8C;&#x8BC1;&#x8FD9;&#x4E09;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x5728; html &#x76EE;&#x5F55;&#x4E0B;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x8F6F;&#x94FE;&#x63A5;&#x6307;&#x5411; first &#x6587;&#x4EF6;&#x5939;&#xFF1A;</p>
+<pre><code>ln -s first realpath
+</code></pre><pre><code>&#x279C;  html curl static.ziyang.com/realpath/1.txt
+/Users/mtdp/myproject/nginx/test_nginx/html/realpath/1.txt:/Users/mtdp/myproject/nginx/test_nginx/html/realpath/:/Users/mtdp/myproject/nginx/test_nginx/html/first
+</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x4E09;&#x4E2A;&#x8DEF;&#x5F84;&#x5206;&#x522B;&#x662F;&#xFF1A;</p>
+<ul>
+<li>/Users/mtdp/myproject/nginx/test_nginx/html/realpath/1.txt</li>
+<li>/Users/mtdp/myproject/nginx/test_nginx/html/realpath/</li>
+<li>/Users/mtdp/myproject/nginx/test_nginx/html/first</li>
+</ul>
+<p>&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x4E00;&#x4E9B;&#x914D;&#x7F6E;&#x6307;&#x4EE4;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<p><strong>&#x9759;&#x6001;&#x6587;&#x4EF6;&#x8FD4;&#x56DE;&#x65F6;&#x7684; Content-Type</strong></p>
+<pre><code>Syntax: types { ... }
+Default: types { text/html html; image/gif gif; image/jpeg jpg; } 
+Context: http, server, location
+
+Syntax: default_type mime-type;
+Default: default_type text/plain; 
+Context: http, server, location
+
+Syntax: types_hash_bucket_size size;
+Default: types_hash_bucket_size 64; 
+Context: http, server, location
+
+Syntax: types_hash_max_size size;
+Default: types_hash_max_size 1024; 
+Context: http, server, location
+</code></pre><p><strong>&#x672A;&#x627E;&#x5230;&#x6587;&#x4EF6;&#x65F6;&#x7684;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;</strong></p>
+<pre><code>Syntax: log_not_found on | off;
+Default: log_not_found on; 
+Context: http, server, location
+</code></pre><p>&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x7ECF;&#x5E38;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x627E;&#x4E0D;&#x5230;&#x6587;&#x4EF6;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x4E2D;&#x5C31;&#x4F1A;&#x6253;&#x5370;&#x51FA;&#x6765;&#xFF1A;</p>
+<pre><code>[error] 10156#0: *10723 open() &quot;/html/first/2.txt/root/2.txt&quot; failed (2: No such file or directory)
+</code></pre><p>&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x8BB0;&#x5F55;&#x65E5;&#x5FD7;&#xFF0C;&#x53EF;&#x4EE5;&#x5173;&#x6389;&#x3002;</p>
+<h3 id="&#x91CD;&#x5B9A;&#x5411;&#x8DF3;&#x8F6C;&#x7684;&#x57DF;&#x540D;">&#x91CD;&#x5B9A;&#x5411;&#x8DF3;&#x8F6C;&#x7684;&#x57DF;&#x540D;</h3>
+<p>&#x73B0;&#x5728;&#x6709;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x8BBF;&#x95EE;&#x76EE;&#x5F55;&#x65F6;&#x6700;&#x540E;&#x6CA1;&#x6709;&#x5E26; /&#xFF0C;static &#x6A21;&#x5757;&#x4F1A;&#x8FD4;&#x56DE; 301 &#x91CD;&#x5B9A;&#x5411;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x89C4;&#x5219;&#x662F;&#x600E;&#x4E48;&#x5B9A;&#x4E49;&#x7684;&#x5462;&#xFF0C;&#x770B;&#x4E0B;&#x9762;&#x4E09;&#x4E2A;&#x6307;&#x4EE4;&#xFF1A;</p>
+<pre><code># &#x8BE5;&#x6307;&#x4EE4;&#x51B3;&#x5B9A;&#x91CD;&#x5B9A;&#x5411;&#x65F6;&#x7684;&#x57DF;&#x540D;&#xFF0C;&#x53EF;&#x4EE5;&#x51B3;&#x5B9A;&#x8FD4;&#x56DE;&#x54EA;&#x4E2A;&#x57DF;&#x540D;
+Syntax: server_name_in_redirect on | off;
+Default: server_name_in_redirect off; 
+Context: http, server, location
+# &#x8BE5;&#x6307;&#x4EE4;&#x51B3;&#x5B9A;&#x91CD;&#x5B9A;&#x5411;&#x65F6;&#x7684;&#x7AEF;&#x53E3;
+Syntax: port_in_redirect on | off;
+Default: port_in_redirect on; 
+Context: http, server, location
+# &#x8BE5;&#x6307;&#x4EE4;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x586B;&#x57DF;&#x540D;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x6253;&#x5F00;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8FD4;&#x56DE;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;
+Syntax: absolute_redirect on | off;
+Default: absolute_redirect on; 
+Context: http, server, location
+</code></pre><p>&#x8FD9;&#x4E09;&#x4E2A;&#x6307;&#x4EE4;&#x7684;&#x5B9E;&#x9645;&#x7528;&#x6CD5;&#x6765;&#x5B9E;&#x6218;&#x6F14;&#x793A;&#x4E00;&#x4E0B;&#xFF0C;&#x5148;&#x6765;&#x770B;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code>server {
+    server_name return.ziyang.com dir.ziyang.com;
+    server_name_in_redirect on;
+    listen 8088;
+    port_in_redirect on;
+    absolute_redirect off;
+
+    root html/;
+}
+</code></pre><p>absolute_redirect &#x9ED8;&#x8BA4;&#x662F;&#x6253;&#x5F00;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x628A;&#x5B83;&#x5173;&#x95ED;&#x4E86;&#xFF0C;&#x770B;&#x4E0B;&#x662F;&#x600E;&#x4E48;&#x8FD4;&#x56DE;&#x7684;&#xFF1A;</p>
+<pre><code>&#x279C;  test_nginx curl localhost:8088/first -I
+HTTP/1.1 301 Moved Permanently
+Server: nginx/1.17.8
+Date: Tue, 12 May 2020 00:31:36 GMT
+Content-Type: text/html
+Content-Length: 169
+Connection: keep-alive
+Location: /first/
+</code></pre><p>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x770B;&#x5230;&#x8FD4;&#x56DE;&#x7684;&#x5934;&#x90E8; Location &#x4E2D;&#x6CA1;&#x6709;&#x52A0;&#x4E0A;&#x57DF;&#x540D;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x518D;&#x628A; absolute_redirect &#x6253;&#x5F00;&#xFF08;&#x9ED8;&#x8BA4;&#x662F;&#x6253;&#x5F00;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x6CE8;&#x91CA;&#x6389;&#x5C31;&#x884C;&#x4E86;&#xFF09;&#xFF0C;&#x770B;&#x4E0B;&#x8FD4;&#x56DE;&#x4EC0;&#x4E48;&#xFF1A;</p>
+<ul>
+<li>absolute_redirect on</li>
+<li>server_name_in_redirect on</li>
+<li>port_in_redirect on</li>
+</ul>
+<pre><code>&#x279C;  test_nginx curl localhost:8088/first -I
+HTTP/1.1 301 Moved Permanently
+Server: nginx/1.17.8
+Date: Tue, 12 May 2020 00:35:49 GMT
+Content-Type: text/html
+Content-Length: 169
+Location: http://return.ziyang.com:8088/first/
+Connection: keep-alive
+</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x8FD4;&#x56DE;&#x4E86;&#x57DF;&#x540D;&#xFF0C;&#x800C;&#x4E14;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x6211;&#x4EEC;&#x914D;&#x7F6E;&#x7684;&#x4E3B;&#x57DF;&#x540D;&#x52A0;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#xFF0C;server_name_in_redirect &#x548C; port_in_redirect &#x8FD9;&#x4E24;&#x4E2A;&#x6307;&#x4EE4;&#x6253;&#x5F00;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x5173;&#x95ED;&#x6389;&#x8FD9;&#x4E24;&#x4E2A;&#x6307;&#x4EE4;&#xFF0C;&#x770B;&#x4E0B;&#x8FD4;&#x56DE;&#x4EC0;&#x4E48;&#xFF1A;</p>
+<ul>
+<li>absolute_redirect on</li>
+<li>server_name_in_redirect off</li>
+<li>port_in_redirect off</li>
+</ul>
+<pre><code>&#x279C;  test_nginx curl localhost:8088/first -I
+HTTP/1.1 301 Moved Permanently
+Server: nginx/1.17.8
+Date: Tue, 12 May 2020 00:39:31 GMT
+Content-Type: text/html
+Content-Length: 169
+Location: http://localhost/first/
+Connection: keep-alive
+</code></pre><p>&#x8FD9;&#x4E24;&#x4E2A;&#x6307;&#x4EE4;&#x90FD;&#x8BBE;&#x7F6E;&#x4E3A; off &#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;&#x8FD4;&#x56DE;&#x7684;&#x4E0D;&#x518D;&#x662F;&#x4E3B;&#x57DF;&#x540D;&#x52A0;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x800C;&#x662F;&#x6211;&#x4EEC;&#x8BF7;&#x6C42;&#x7684;&#x57DF;&#x540D;&#x548C;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x8BF7;&#x6C42;&#x5934;&#x4E2D;&#x52A0;&#x4E0A; Host&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x7528; Host &#x8BF7;&#x6C42;&#x5934;&#x4E2D;&#x7684;&#x57DF;&#x540D;&#x3002;</p>
+<h2 id="index-&#x6A21;&#x5757;">index &#x6A21;&#x5757;</h2>
+<ul>
+<li>&#x6A21;&#x5757;&#xFF1A;ngx_http_index_module</li>
+<li>&#x529F;&#x80FD;&#xFF1A;&#x6307;&#x5B9A; / &#x7ED3;&#x5C3E;&#x7684;&#x76EE;&#x5F55;&#x8BBF;&#x95EE;&#x65F6;&#xFF0C;&#x8FD4;&#x56DE; index &#x6587;&#x4EF6;&#x5185;&#x5BB9;</li>
+<li>&#x8BED;&#x6CD5;&#xFF1A;Syntax: index file ...; Default: index index.html; Context: http, server, location</li>
+<li>&#x5148;&#x4E8E; autoindex &#x6A21;&#x5757;&#x6267;&#x884C;</li>
+</ul>
+<p>&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x8BBF;&#x95EE;&#x4EE5; / &#x7ED3;&#x5C3E;&#x7684;&#x76EE;&#x5F55;&#x65F6;&#xFF0C;&#x4F1A;&#x53BB;&#x627E; root &#x6216; alias &#x6307;&#x4EE4;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684; index.html&#xFF0C;&#x5982;&#x679C;&#x6709;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x4F1A;&#x628A;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x8FD4;&#x56DE;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x3002;</p>
+<h2 id="autoindex-&#x6A21;&#x5757;">autoindex &#x6A21;&#x5757;</h2>
+<ul>
+<li>&#x6A21;&#x5757;&#xFF1A;ngx_http_autoindex_module&#xFF0C;&#x9ED8;&#x8BA4;&#x7F16;&#x8BD1;&#x8FDB; Nginx&#xFF0C;&#x4F7F;&#x7528; --without-http_autoindex_module &#x53D6;&#x6D88;</li>
+<li>&#x529F;&#x80FD;&#xFF1A;&#x5F53; URL &#x4EE5; / &#x7ED3;&#x5C3E;&#x65F6;&#xFF0C;&#x5C1D;&#x8BD5;&#x4EE5; html/xml/json/jsonp &#x7B49;&#x683C;&#x5F0F;&#x8FD4;&#x56DE; root/alias &#x4E2D;&#x6307;&#x5411;&#x76EE;&#x5F55;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;</li>
+<li>&#x8BED;&#x6CD5;&#xFF1A;# &#x5F00;&#x542F;&#x6216;&#x5173;&#x95ED; Syntax: autoindex on | off; Default: autoindex off; Context: http, server, location # &#x5F53;&#x4EE5; HTML &#x683C;&#x5F0F;&#x8F93;&#x51FA;&#x65F6;&#xFF0C;&#x63A7;&#x5236;&#x662F;&#x5426;&#x8F6C;&#x6362;&#x4E3A; KB/MB/GB Syntax: autoindex_exact_size on | off; Default: autoindex_exact_size on; Context: http, server, location # &#x63A7;&#x5236;&#x4EE5;&#x54EA;&#x79CD;&#x683C;&#x5F0F;&#x8F93;&#x51FA; Syntax: autoindex_format html | xml | json | jsonp; Default: autoindex_format html; Context: http, server, location # &#x63A7;&#x5236;&#x662F;&#x5426;&#x4EE5;&#x672C;&#x5730;&#x65F6;&#x95F4;&#x683C;&#x5F0F;&#x663E;&#x793A;&#x8FD8;&#x662F; UTC &#x683C;&#x5F0F; Syntax: autoindex_localtime on | off; Default: autoindex_localtime off; Context: http, server, location</li>
+</ul>
+<h3 id="&#x5B9E;&#x6218;">&#x5B9E;&#x6218;</h3>
+<ul>
+<li>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<pre><code>server {
+    server_name autoindex.ziyang.com;
+    listen 8080;
+    location / {
+        alias html/;
+        autoindex on;
+        #index b.html;
+        autoindex_exact_size on;
+        autoindex_format html;
+        autoindex_localtime on;
+    }
+}
+</code></pre><p>&#x8FD9;&#x91CC;&#x6211;&#x628A; index b.html &#x8FD9;&#x6761;&#x6307;&#x4EE4;&#x7ED9;&#x6CE8;&#x91CA;&#x6389;&#x4E86;&#xFF0C;&#x800C; index &#x6A21;&#x5757;&#x662F;&#x9ED8;&#x8BA4;&#x7F16;&#x8BD1;&#x8FDB; Nginx &#x7684;&#xFF0C;&#x4E14;&#x9ED8;&#x8BA4;&#x6307;&#x4EE4;&#x662F; index index.html&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x4F1A;&#x53BB;&#x627E;&#x662F;&#x5426;&#x6709; index.html &#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x3002;</p>
+<ul>
+<li>&#x6253;&#x5F00;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x8BBF;&#x95EE; autoindex.ziyang.com:8080&#xFF0C;html &#x76EE;&#x5F55;&#x4E0B;&#x9ED8;&#x8BA4;&#x662F;&#x6709; index.html &#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x663E;&#x793A;&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;</li>
+</ul>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/ca5fe741c3d44bc38689bbd2819d2fa8~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=8K07YdM7EkHmIn2vz32vTM%2Fk%2FJw%3D" alt=""></p>
+<ul>
+<li>&#x6253;&#x5F00; index b.html &#x6307;&#x4EE4;&#x6CE8;&#x91CA;&#x3002;&#x7531;&#x4E8E; html &#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x5E76;&#x4E0D;&#x5B58;&#x5728; b.html &#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x8BF7;&#x6C42;&#x4F1A;&#x8D70;&#x5230; autoindex &#x6A21;&#x5757;&#xFF0C;&#x663E;&#x793A;&#x76EE;&#x5F55;&#xFF1A;</li>
+</ul>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/19ac8bcbc64f429ca1b3891e61f0f5f6~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=Ihkow1V3UiK8yyUUJHrB6tyGaNQ%3D" alt=""></p>
+<p>&#x540E;&#x9762;&#x7684;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x663E;&#x793A;&#x683C;&#x5F0F;&#x5C31;&#x662F;&#x7531; autoindex_exact_size on; &#x8FD9;&#x6761;&#x6307;&#x4EE4;&#x51B3;&#x5B9A;&#x7684;&#x3002;</p>
+<h2 id="concat&#x6A21;&#x5757;">concat&#x6A21;&#x5757;</h2>
+<p>&#x4E0B;&#x9762;&#x4ECB;&#x7ECD;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x63D0;&#x5347;&#x5C0F;&#x6587;&#x4EF6;&#x6027;&#x80FD;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x662F;&#x7531;&#x963F;&#x91CC;&#x5DF4;&#x5DF4;&#x5F00;&#x53D1;&#x7684;&#xFF0C;&#x5728;&#x6DD8;&#x5B9D;&#x7F51;&#x4E2D;&#x6709;&#x5E7F;&#x6CDB;&#x5E94;&#x7528;&#x3002;</p>
+<ul>
+<li>&#x6A21;&#x5757;&#xFF1A;ngx_http_concat_module</li>
+<li>&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x8005;&#xFF1A;Tengine(<a href="https://github.com/alibaba/nginx-http-concat)" target="_blank">https://github.com/alibaba/nginx-http-concat)</a> --add-module=../nginx-http-concat/</li>
+<li>&#x529F;&#x80FD;&#xFF1A;&#x5408;&#x5E76;&#x591A;&#x4E2A;&#x5C0F;&#x6587;&#x4EF6;&#x8BF7;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x660E;&#x663E;&#x63D0;&#x5347; HTTP &#x8BF7;&#x6C42;&#x7684;&#x6027;&#x80FD;</li>
+<li>&#x6307;&#x4EE4;&#xFF1A;#&#x5728; URI &#x540E;&#x9762;&#x52A0;&#x4E0A; ??&#xFF0C;&#x901A;&#x8FC7; &#x201D;,&#x201C; &#x5206;&#x5272;&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x6709;&#x53C2;&#x6570;&#xFF0C;&#x5219;&#x5728;&#x6700;&#x540E;&#x901A;&#x8FC7; ? &#x6DFB;&#x52A0;&#x53C2;&#x6570; concat on | off default concat off Context http, server, location concat_types MIME types Default concat_types: text/css application/x-javascript Context http, server, location concat_unique on | off Default concat_unique on Context http, server, location concat_max_files numberp Default concat_max_files 10 Context http, server, location concat_delimiter string Default NONE Context http, server, locatione concat_ignore_file_error on | off Default off Context http, server, location</li>
+</ul>
+<p>&#x6253;&#x5F00;&#x6DD8;&#x5B9D;&#x4E3B;&#x9875;&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;&#x5C0F;&#x6587;&#x4EF6;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x6765;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#x7684;&#xFF1A;</p>
+<p><img src="https://p3-sign.toutiaoimg.com/pgc-image/902b7a5bd0644c8cacf4712a3638ee73~tplv-tt-origin-web:gif.jpeg?_iz=58558&amp;from=article.pc_detail&amp;lk3s=953192f4&amp;x-expires=1735536207&amp;x-signature=LwAEf8pLqMA91oPLOFkUbu63Kc0%3D" alt=""></p>
+<p>&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x505A;&#x5B9E;&#x6218;&#x4E86;&#xFF0C;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x540C;&#x5B66;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x53BB;&#x7F16;&#x8BD1;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x505A;&#x4E00;&#x4E0B;&#x5B9E;&#x9A8C;&#xFF0C;&#x6211;&#x628A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x653E;&#x5728;&#x8FD9;&#x91CC;&#xFF1A;</p>
+<pre><code>server {
+    server_name concat.ziyang.com;
+    error_log logs/myerror.log debug;
+    concat on;
+    root html;
+    location /concat {
+        concat_max_files 20;
+        concat_types text/plain;
+        concat_unique on;
+        concat_delimiter &apos;:::&apos;;
+        concat_ignore_file_error on;
+    }
+}
+</code></pre><h2 id="log-&#x9636;&#x6BB5;">log &#x9636;&#x6BB5;</h2>
+<p>&#x4E0B;&#x9762;&#x7EC8;&#x4E8E;&#x6765;&#x5230;&#x4E86; 11 &#x4E2A;&#x9636;&#x6BB5;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x8BB0;&#x5F55;&#x8BF7;&#x6C42;&#x8BBF;&#x95EE;&#x65E5;&#x5FD7;&#x7684; log &#x6A21;&#x5757;&#x3002;</p>
+<ul>
+<li>&#x529F;&#x80FD;&#xFF1A;&#x5C06; HTTP &#x8BF7;&#x6C42;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#x8BB0;&#x5F55;&#x5230;&#x65E5;&#x5FD7;</li>
+<li>&#x6A21;&#x5757;&#xFF1A;ngx_http_log_module&#xFF0C;&#x65E0;&#x6CD5;&#x7981;&#x7528;</li>
+</ul>
+<h2 id="access-&#x65E5;&#x5FD7;&#x683C;&#x5F0F;">access &#x65E5;&#x5FD7;&#x683C;&#x5F0F;</h2>
+<pre><code>Syntax: log_format name [escape=default|json|none] string ...;
+Default: log_format combined &quot;...&quot;; 
+Context: http
+</code></pre><p>&#x9ED8;&#x8BA4;&#x7684; combined &#x65E5;&#x5FD7;&#x683C;&#x5F0F;&#xFF1A;</p>
+<pre><code>log_format combined &apos;$remote_addr - $remote_user [$time_local] &apos; 
+&apos;&quot;$request&quot; $status $body_bytes_sent &apos; &apos;&quot;$http_referer&quot; 
+&quot;$http_user_agent&quot;&apos;;
+</code></pre><h2 id="&#x914D;&#x7F6E;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;">&#x914D;&#x7F6E;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;</h2>
+<pre><code>Syntax: access_log path [format [buffer=size] [gzip[=level]] [flush=time] [if=condition]];
+        access_log off;
+Default: access_log logs/access.log combined; 
+Context: http, server, location, if in location, limit_except
+</code></pre><ul>
+<li>path &#x8DEF;&#x5F84;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x53D8;&#x91CF;&#xFF1A;&#x4E0D;&#x6253;&#x5F00; cache &#x65F6;&#x6BCF;&#x8BB0;&#x5F55;&#x4E00;&#x6761;&#x65E5;&#x5FD7;&#x90FD;&#x9700;&#x8981;&#x6253;&#x5F00;&#x3001;&#x5173;&#x95ED;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;</li>
+<li>if &#x901A;&#x8FC7;&#x53D8;&#x91CF;&#x503C;&#x63A7;&#x5236;&#x8BF7;&#x6C42;&#x65E5;&#x5FD7;&#x662F;&#x5426;&#x8BB0;&#x5F55;</li>
+<li>&#x65E5;&#x5FD7;&#x7F13;&#x5B58;&#x529F;&#x80FD;&#xFF1A;&#x6279;&#x91CF;&#x5C06;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x65E5;&#x5FD7;&#x5199;&#x5165;&#x78C1;&#x76D8;&#x5199;&#x5165;&#x78C1;&#x76D8;&#x7684;&#x6761;&#x4EF6;&#xFF1A;&#x6240;&#x6709;&#x5F85;&#x5199;&#x5165;&#x78C1;&#x76D8;&#x7684;&#x65E5;&#x5FD7;&#x5927;&#x5C0F;&#x8D85;&#x51FA;&#x7F13;&#x5B58;&#x5927;&#x5C0F;&#xFF1B;&#x8FBE;&#x5230; flush &#x6307;&#x5B9A;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF1B;worker &#x8FDB;&#x7A0B;&#x6267;&#x884C; reopen &#x547D;&#x4EE4;&#xFF0C;&#x6216;&#x8005;&#x6B63;&#x5728;&#x5173;&#x95ED;&#x3002;</li>
+<li>&#x65E5;&#x5FD7;&#x538B;&#x7F29;&#x529F;&#x80FD;&#xFF1A;&#x6279;&#x91CF;&#x538B;&#x7F29;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x65E5;&#x5FD7;&#xFF0C;&#x518D;&#x5199;&#x5165;&#x78C1;&#x76D8;buffer &#x5927;&#x5C0F;&#x9ED8;&#x8BA4;&#x4E3A; 64KB&#x538B;&#x7F29;&#x7EA7;&#x522B;&#x9ED8;&#x8BA4;&#x4E3A; 1&#xFF08;1&#x6700;&#x5FEB;&#x538B;&#x7F29;&#x7387;&#x6700;&#x4F4E;&#xFF0C;9&#x6700;&#x6162;&#x538B;&#x7F29;&#x7387;&#x6700;&#x9AD8;&#xFF09;&#x6253;&#x5F00;&#x65E5;&#x5FD7;&#x538B;&#x7F29;&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x6253;&#x5F00;&#x65E5;&#x5FD7;&#x7F13;&#x5B58;&#x529F;&#x80FD;</li>
+</ul>
+<h2 id="&#x5BF9;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x540D;&#x5305;&#x542B;&#x53D8;&#x91CF;&#x65F6;&#x7684;&#x4F18;&#x5316;">&#x5BF9;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x540D;&#x5305;&#x542B;&#x53D8;&#x91CF;&#x65F6;&#x7684;&#x4F18;&#x5316;</h2>
+<pre><code>Syntax: open_log_file_cache max=N [inactive=time] [min_uses=N] [valid=time];
+        open_log_file_cache off;
+Default: open_log_file_cache off; 
+Context: http, server, location
+</code></pre><ul>
+<li>max&#xFF1A;&#x7F13;&#x5B58;&#x5185;&#x7684;&#x6700;&#x5927;&#x6587;&#x4EF6;&#x53E5;&#x67C4;&#x6570;&#xFF0C;&#x8D85;&#x51FA;&#x540E;&#x7528; LRU &#x7B97;&#x6CD5;&#x6DD8;&#x6C70;</li>
+<li>inactive&#xFF1A;&#x6587;&#x4EF6;&#x8BBF;&#x95EE;&#x5B8C;&#x540E;&#x5728;&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x4E0D;&#x4F1A;&#x88AB;&#x5173;&#x95ED;&#x3002;&#x9ED8;&#x8BA4; 10 &#x79D2;</li>
+<li>min_uses&#xFF1A;&#x5728; inactive &#x65F6;&#x95F4;&#x5185;&#x4F7F;&#x7528;&#x6B21;&#x6570;&#x8D85;&#x8FC7; min_uses &#x624D;&#x4F1A;&#x7EE7;&#x7EED;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x3002;&#x9ED8;&#x8BA4; 1</li>
+<li>valid&#xFF1A;&#x8D85;&#x51FA; valid &#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x5C06;&#x5BF9;&#x7F13;&#x5B58;&#x7684;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;&#x9ED8;&#x8BA4; 60 &#x79D2;</li>
+<li>off&#xFF1A;&#x5173;&#x95ED;&#x7F13;&#x5B58;&#x529F;&#x80FD;</li>
+</ul>
+<p>&#x65E5;&#x5FD7;&#x6A21;&#x5757;&#x6CA1;&#x6709;&#x5B9E;&#x6218;&#x3002;</p>
+<hr>
+<p>&#x5230;&#x4E86;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5C06; Nginx &#x5904;&#x7406; HTTP &#x8BF7;&#x6C42;&#x7684; 11 &#x4E2A;&#x9636;&#x6BB5;&#x5168;&#x90E8;&#x68B3;&#x7406;&#x4E86;&#x4E00;&#x904D;&#xFF0C;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x57FA;&#x672C;&#x90FD;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x5757;&#x3002;&#x76F8;&#x4FE1;&#x5BF9;&#x4E8E;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x5168;&#x6D41;&#x7A0B;&#x7684;&#x89E3;&#x6790;&#xFF0C;&#x5927;&#x5BB6;&#x90FD;&#x80FD;&#x591F;&#x770B;&#x61C2; Nginx &#x7684;&#x914D;&#x7F6E;&#x4E86;&#xFF0C;&#x5728;&#x6B64;&#x4E4B;&#x4E0A;&#xFF0C;&#x8FD8;&#x80FD;&#x591F;&#x6309;&#x7167;&#x9700;&#x6C42;&#x7075;&#x6D3B;&#x914D;&#x7F6E;&#x51FA;&#x81EA;&#x5DF1;&#x60F3;&#x8981;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x771F;&#x6B63;&#x7684;&#x638C;&#x63E1;&#x4E86; 11 &#x4E2A;&#x9636;&#x6BB5;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 第三章：HTTP 模块详解">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter4/" class="navigation navigation-next " aria-label="Next page: 第四章：反向代理原理与实践">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Nginx处理Http请求全过程","level":"1.4.1","depth":2,"next":{"title":"第四章：反向代理原理与实践","level":"1.5","depth":1,"path":"chapter4/README.md","ref":"chapter4/README.md","articles":[]},"previous":{"title":"第三章：HTTP 模块详解","level":"1.4","depth":1,"path":"chapter3/README.md","ref":"chapter3/README.md","articles":[{"title":"Nginx处理Http请求全过程","level":"1.4.1","depth":2,"path":"chapter3/Nginx处理一个HTTP请求的全过程.md","ref":"chapter3/Nginx处理一个HTTP请求的全过程.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter3/Nginx处理一个HTTP请求的全过程.md","mtime":"2024-12-23T05:25:09.240Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-12-23T05:26:38.878Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
