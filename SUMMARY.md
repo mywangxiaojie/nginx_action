@@ -3,6 +3,7 @@
 * [前言](README.md)
 
 * [第一章：NGINX 入门介绍](chapter1/README.md)
+    * [第一节：NGINX 安装与配置](chapter1/Linux-Nginx-关闭进程.md)
 
 * [第二章：NGINX 基本配置语法](chapter2/README.md)
 
