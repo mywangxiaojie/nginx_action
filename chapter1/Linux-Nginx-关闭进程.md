@@ -8,9 +8,9 @@ nobody    2714  2713  0 07:56 ?        00:00:00 nginx: worker process
 
 * * *
 
-改动worker\_processes=10。来创建多个进程
+启动nginx时候，我们通过更改配置，设置参数worker\_processes=10。来创建多个进程
 
-```csharp
+```conf
 #user  nobody;
 worker_processes  10;
 
@@ -54,15 +54,16 @@ fuhui     2852  2332  0 08:29 pts/6    00:00:00 grep --color=auto nginx
 
 * * *
 
+开始删除掉正在运行的Nginx进程
 
-正确的运行方式
+方式1：
 ```shell
-fuhui@ubuntu:/usr/local/nginx$ sudo kill ` ps -ef | grep 'nginx' | awk '{print  $2}' `
+sudo kill ` ps -ef | grep 'nginx' | awk '{print  $2}' `
 ```
 
 * * *
 
-To kill all Nginx Processes
+方式2：
 
 ```powershell
 kill $(ps aux | grep '[n]ginx' | awk '{print $2}')

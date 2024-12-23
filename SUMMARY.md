@@ -24,6 +24,7 @@
 * [第十章：性能优化技巧](chapter10/README.md)
 
 * [第十一章：监控与故障排查](chapter11/README.md)
+    * [HertzBeat快速监控](chapter11/HertzBeat快速监控.md)
 
 * [第十二章：高可用性设计](chapter12/README.md)
 
